@@ -83,3 +83,7 @@ Measured LCP on sub-routes is 2.6–2.9 s in this profile because hash routes re
 - WebKit/Safari not tested (see above). Chromium and Firefox were tested.
 - The 3D scenes were checked visually in Chromium only; an automated independent review of the reworked connectivity scene was interrupted and not repeated.
 - No analytics, CAPTCHA, CRM or newsletter were added, by design.
+
+## Update v1.1 (24 September 2026): Enterprise Manager, compression guide, draft conformance statement
+
+Scope and results are in `CHANGE-REPORT-v1.1.md`. In brief, re-run on the final build: typecheck and build pass; `npm run lint:content` passes on 12 rendered pages (now including the conformance and compression routes and the document checks); no horizontal overflow across 11 routes × 6 viewports; 0 console errors; 0 axe violations at 390 and 1440; keyboard flows 18/18 passed; Firefox smoke clean; WebKit still not runnable on this machine. A light/dark appearance option was built and verified during this update and then removed at the owner's request; the site has one appearance. Additional launch input from this update: the conformance evidence list (E01–E22) needed before the draft can be issued, and confirmation of the "DICOM Camera Enterprise Manager" name.

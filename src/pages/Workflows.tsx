@@ -61,7 +61,7 @@ export default function WorkflowsPage() {
                     caption
                     sizes={layout?.sizes}
                     className={cn('mx-auto w-full', layout?.className)}
-                    imgClassName="drop-shadow-[0_24px_40px_rgba(20,34,53,0.18)]"
+                    imgClassName="drop-shadow-screen"
                   />
                 ) : (
                   <WorkflowDiagram id={`${section.id}-diagram`} paths={[section.path]} variant="compact" className="mx-auto w-full max-w-[440px]" />

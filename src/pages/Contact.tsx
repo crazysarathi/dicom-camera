@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { ArrowRight, Check, ShieldAlert } from 'lucide-react';
+import { Link, useSearchParams } from 'react-router-dom';
+import { ArrowRight, Check, ShieldAlert, Tag } from 'lucide-react';
 import type { PageMeta } from '@/lib/seo';
 import { useDocumentMeta } from '@/lib/seo';
 import { PageHero } from '@/components/PageHero';
@@ -20,13 +20,30 @@ export const meta: PageMeta = {
 export default function ContactPage() {
   useDocumentMeta(meta);
   const formEndpoint = siteConfig.contactFormEndpoint;
+  // /#/contact/?topic=enterprise-manager: the Enterprise Manager call to action lands here with its topic.
+  const [params] = useSearchParams();
+  const topicKey = params.get('topic') ?? '';
+  const topic = topicKey ? c.topics[topicKey] : undefined;
+  const email = topic?.email ?? c.primaryAction.email;
   return (
     <>
       <PageHero
         eyebrow={c.eyebrow}
         title={c.title}
         lede={c.intro}
-        actions={<EmailAction email={c.primaryAction.email} buttonLabel={c.primaryAction.label} note={c.primaryAction.note} />}
+        actions={
+          <div className="flex w-full flex-col gap-5">
+            {topic && (
+              <p className="m-0 flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.95rem] text-ink" data-enquiry-topic={topicKey}>
+                <Tag className="size-4 text-teal" aria-hidden="true" />
+                <span className="text-muted-foreground">{topic.label}:</span>
+                <strong className="font-semibold">{topic.name}</strong>
+                <span className="basis-full text-sm text-muted-foreground">{topic.note}</span>
+              </p>
+            )}
+            <EmailAction email={email} buttonLabel={c.primaryAction.label} note={c.primaryAction.note} />
+          </div>
+        }
       />
 
       <Section id={c.details.id} tone="white" aria-labelledby={`${c.details.id}-title`}>
@@ -62,7 +79,7 @@ export default function ContactPage() {
               <SectionHeading id={`${c.form.id}-title`} title={c.form.title} />
             </Reveal>
             <Reveal delay={0.1}>
-              <ContactForm endpoint={formEndpoint} />
+              <ContactForm endpoint={formEndpoint} defaultTopic={topic?.formTopic} />
             </Reveal>
           </div>
         </Section>

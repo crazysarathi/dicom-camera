@@ -118,7 +118,7 @@ export function ScreenshotGallery({ groups, tabsLabel = 'Platform', viewer = tru
                         bleed
                         caption
                         className={cn('w-full', size.className)}
-                        imgClassName="drop-shadow-[0_18px_30px_rgba(20,34,53,0.18)]"
+                        imgClassName="drop-shadow-gallery"
                       />
                       {viewer && (
                         <Button

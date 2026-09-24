@@ -41,7 +41,7 @@ function redirectStub(hashPath, title) {
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <meta http-equiv="refresh" content="0; url=${target}" />
     <script>location.replace(${JSON.stringify(target)});</script>
-    <style>body{font-family:system-ui,sans-serif;background:#F7F9FC;color:#142235;padding:2rem}a{color:#175CD3}</style>
+    <style>:root{color-scheme:light dark}body{font-family:system-ui,sans-serif;background:#F7F9FC;color:#142235;padding:2rem}a{color:#175CD3}@media (prefers-color-scheme:dark){body{background:#0D1420;color:#F1F5F9}a{color:#8CB6FF}}</style>
   </head>
   <body>
     <p>Redirecting to <a href="${target}">${esc(title)}</a>…</p>
@@ -80,8 +80,9 @@ for (const r of routeList) {
 const today = new Date().toISOString().slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${config.origin}/</loc><lastmod>${today}</lastmod></url>\n</urlset>\n`;
 await writeFile(path.join(DIST, 'sitemap.xml'), sitemap);
+// Draft documents (public/documents/) stay out of search results until issued; see DEPLOYMENT.md for the matching header.
 const robots = config.indexable
-  ? `User-agent: *\nAllow: /\n\nSitemap: ${config.origin}/sitemap.xml\n`
+  ? `User-agent: *\nAllow: /\nDisallow: /documents/\n\nSitemap: ${config.origin}/sitemap.xml\n`
   : `# Preview/staging build: not indexable. Build with VITE_INDEXABLE=true for production.\nUser-agent: *\nDisallow: /\n`;
 await writeFile(path.join(DIST, 'robots.txt'), robots);
 await rm(SSR, { recursive: true, force: true });

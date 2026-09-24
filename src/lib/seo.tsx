@@ -24,7 +24,14 @@ export function useDocumentMeta(meta: PageMeta) {
     set('meta[property="og:title"]', 'content', meta.title);
     set('meta[property="og:description"]', 'content', meta.description);
     set('meta[property="og:url"]', 'content', canonicalFor(meta.path));
-  }, [meta.title, meta.description, meta.path, pathname]);
+    // Draft documents (e.g. the conformance statement) are excluded from indexing by route metadata.
+    set('meta[name="robots"]', 'content', robotsFor(meta));
+  }, [meta.title, meta.description, meta.path, meta.noindex, pathname]);
+}
+
+/** Robots directive for a page: production builds index everything except routes flagged noindex. */
+export function robotsFor(meta: Pick<PageMeta, 'noindex'>): string {
+  return siteConfig.indexable && !meta.noindex ? 'index,follow' : 'noindex,nofollow';
 }
 
 /** Hash-based routing: only the origin is a distinct crawlable URL; other pages are addressed as origin/#/path/. */
@@ -37,7 +44,7 @@ export function canonicalFor(path: string) {
 /** Static head markup for a route, used by scripts/prerender.mjs through entry-server. */
 export function renderHead(meta: PageMeta): string {
   const url = canonicalFor(meta.path);
-  const robots = siteConfig.indexable && !meta.noindex ? 'index,follow' : 'noindex,nofollow';
+  const robots = robotsFor(meta);
   const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
   const jsonLd = {
     '@context': 'https://schema.org',

@@ -1,5 +1,5 @@
 // Approved copy for /contact/ (WEBSITE-COPY.md §8). Edit text here, not in the page component.
-import { routes, siteConfig } from '@/config/site';
+import { ENTERPRISE_MANAGER_TOPIC, routes, siteConfig } from '@/config/site';
 
 export const contactContent = {
   eyebrow: 'Contact',
@@ -11,6 +11,19 @@ export const contactContent = {
     email: siteConfig.email.commercial,
     note: 'Opens your email application.',
   },
+  /**
+   * Enquiry topics that arrive through the query string (e.g. /#/contact/?topic=enterprise-manager from the
+   * Enterprise Manager call to action). The matching email route carries the topic in its subject line.
+   */
+  topics: {
+    [ENTERPRISE_MANAGER_TOPIC]: {
+      label: 'Enquiry topic',
+      name: siteConfig.enterpriseManager.name,
+      email: siteConfig.email.enterpriseManager,
+      formTopic: 'Enterprise Manager',
+      note: 'Your email will open with the Enterprise Manager subject line. Mention your clinical teams, licence requirements, integration settings and retention policies.',
+    },
+  } as Record<string, { label: string; name: string; email: { address: string; href: string }; formTopic: string; note: string }>,
   details: {
     id: 'useful-details',
     title: 'Useful details to include',
@@ -46,7 +59,7 @@ export const contactContent = {
       message: 'Message',
     },
     optional: 'optional',
-    topics: ['Hospital deployment', 'Integration', 'Commercial enquiry'],
+    topics: ['Hospital deployment', 'Enterprise Manager', 'Integration', 'Commercial enquiry'],
     platforms: ['iOS', 'Android', 'Both', 'Not sure'],
     note: 'Please do not include patient information.',
     submit: 'Send enquiry',

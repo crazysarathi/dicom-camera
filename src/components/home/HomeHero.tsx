@@ -42,7 +42,7 @@ export function HomeHero() {
             sizes="(min-width: 1024px) 400px, 70vw"
             bleed
             className="w-[70vw] max-w-[400px] lg:w-full lg:max-w-[360px] xl:max-w-[400px]"
-            imgClassName="drop-shadow-[0_28px_48px_rgba(20,34,53,0.22)]"
+            imgClassName="drop-shadow-hero"
           />
         </div>
 

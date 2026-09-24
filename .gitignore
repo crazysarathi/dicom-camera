@@ -5,3 +5,4 @@ dist-ssr
 verification/screenshots/*.png
 verification/lighthouse/*.html
 verification/lighthouse/*.json
+verification/documents/*.html

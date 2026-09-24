@@ -133,6 +133,7 @@ interface IrisProps {
 function Iris({ animate, finePointer, placement }: IrisProps) {
   const viewport = useThree((state) => state.viewport);
   const place = computePlacement(viewport.width, viewport.height, placement);
+  const palette = scenePalette;
 
   const geometries = useMemo(
     () => ({
@@ -156,15 +157,15 @@ function Iris({ animate, finePointer, placement }: IrisProps) {
 
   const materials = useMemo(
     () => ({
-      blade: new MeshStandardMaterial({ color: scenePalette.blade, metalness: 0.2, roughness: 0.5 }),
-      bladeAlt: new MeshStandardMaterial({ color: scenePalette.bladeAlt, metalness: 0.2, roughness: 0.5 }),
-      plate: new MeshStandardMaterial({ color: scenePalette.plate, metalness: 0.1, roughness: 0.7 }),
-      rim: new MeshStandardMaterial({ color: scenePalette.rim, metalness: 0.3, roughness: 0.4 }),
-      pin: new MeshStandardMaterial({ color: scenePalette.pin, metalness: 0.3, roughness: 0.4 }),
-      blueHairline: new MeshBasicMaterial({ color: scenePalette.blueHairline }),
-      faintHairline: new MeshBasicMaterial({ color: scenePalette.faintHairline }),
+      blade: new MeshStandardMaterial({ color: palette.blade, metalness: 0.2, roughness: 0.5 }),
+      bladeAlt: new MeshStandardMaterial({ color: palette.bladeAlt, metalness: 0.2, roughness: 0.5 }),
+      plate: new MeshStandardMaterial({ color: palette.plate, metalness: 0.1, roughness: 0.7 }),
+      rim: new MeshStandardMaterial({ color: palette.rim, metalness: 0.3, roughness: 0.4 }),
+      pin: new MeshStandardMaterial({ color: palette.pin, metalness: 0.3, roughness: 0.4 }),
+      blueHairline: new MeshBasicMaterial({ color: palette.blueHairline }),
+      faintHairline: new MeshBasicMaterial({ color: palette.faintHairline }),
     }),
-    [],
+    [palette],
   );
 
   useEffect(

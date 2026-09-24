@@ -7,7 +7,7 @@ import { footerGroups } from '@/content/nav';
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-line bg-white" aria-labelledby="footer-heading">
+    <footer className="border-t border-line bg-card" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">Site footer</h2>
       <div className="container-content py-12 lg:py-16">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_repeat(3,1fr)] lg:gap-8">

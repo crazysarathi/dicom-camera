@@ -135,7 +135,7 @@ export function WorkflowDiagram({
                           className={cn(
                             'inline-flex shrink-0 items-center justify-center rounded-lg',
                             compact ? 'size-8' : 'size-10',
-                            last ? 'bg-teal text-white' : 'bg-primary-soft text-primary-deep',
+                            last ? 'bg-teal text-teal-foreground' : 'bg-primary-soft text-primary-deep',
                           )}
                         >
                           <Icon className={compact ? 'size-4' : 'size-5'} />

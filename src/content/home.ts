@@ -1,7 +1,7 @@
 // Homepage copy (approved public copy, British spelling as written). Edit text here, not in components.
 import type { LucideIcon } from 'lucide-react';
 import { Bandage, Camera, ClipboardList, Images, ListChecks, Stethoscope, UserSearch, Users, Workflow } from 'lucide-react';
-import { routes } from '@/config/site';
+import { enterpriseManagerHref, routes } from '@/config/site';
 import type { ScreenshotId } from '@/images/manifest';
 
 export interface TextLink {
@@ -58,6 +58,13 @@ export const homeContent = {
       { title: 'Patient demographic queries.', body: 'Retrieve patient demographics through HL7 and FHIR interfaces to support accurate patient association.', icon: UserSearch },
     ] as TitledItem[],
     link: { label: 'Explore hospital integration', to: routes.enterprise } as TextLink,
+    /** Concise Enterprise Manager introduction (optional server for centralised licensing, configuration and policy control). */
+    manager: {
+      title: 'Central control for enterprise deployments.',
+      body:
+        'With DICOM Camera Enterprise Manager, your organisation can manage advanced-feature access, floating licences and app configuration from one place. Give each user a personal setup link or QR code, and keep key settings under administrative control.',
+      link: { label: 'Explore Enterprise Manager', to: enterpriseManagerHref } as TextLink,
+    },
   },
 
   annotations: {

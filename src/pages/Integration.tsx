@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, PenLine, Video } from 'lucide-react';
+import { ArrowRight, BookOpen, Download, PenLine, Video } from 'lucide-react';
 import type { PageMeta } from '@/lib/seo';
 import { useDocumentMeta } from '@/lib/seo';
 import { PageHero } from '@/components/PageHero';
@@ -8,10 +8,12 @@ import { CapabilityTable } from '@/components/CapabilityTable';
 import { CtaBand } from '@/components/CtaBand';
 import { Reveal } from '@/components/Reveal';
 import { Button } from '@/components/ui/button';
+import { DocumentStatus } from '@/components/DocumentStatus';
 import { ConnectivitySceneLazy } from '@/components/three';
 import {
   annotationsSection,
   compressionSection,
+  conformanceSection,
   connectivitySection,
   discussSection,
   integrationContents,
@@ -22,7 +24,7 @@ import {
 
 export const meta: PageMeta = {
   title: 'DICOM Connectivity and Image Formats | DICOM Camera',
-  description: 'Explore DICOMweb, DIMSE, MWL, MPPS, UPS, HL7/FHIR demographic queries, image compression, video, and annotation interoperability.',
+  description: 'Explore DICOMweb, DIMSE, MWL, MPPS, UPS, HL7/FHIR demographic queries, image compression, video, annotations and the draft DICOM conformance statement.',
   path: '/integration/',
 };
 
@@ -33,7 +35,7 @@ export const meta: PageMeta = {
 function ContentsAside() {
   return (
     <div className="mx-auto w-full max-w-sm lg:ml-auto lg:mr-0 lg:max-w-md">
-      <div className="relative mb-5 hidden aspect-[16/7] overflow-hidden rounded-2xl border border-line bg-white/70 shadow-card lg:block">
+      <div className="relative mb-5 hidden aspect-[16/7] overflow-hidden rounded-2xl border border-line bg-card/70 shadow-card lg:block">
         <ConnectivitySceneLazy wrapperClassName="absolute inset-0" />
       </div>
       <nav aria-label="On this page" className="card-surface p-5 sm:p-6">
@@ -90,6 +92,7 @@ export default function IntegrationPage() {
       <Section id={compressionSection.id} tone="surface" aria-labelledby={`${compressionSection.id}-title`}>
         <Reveal>
           <SectionHeading id={`${compressionSection.id}-title`} title={compressionSection.title} lede={compressionSection.lede} split />
+          <p className="measure mt-5 text-body text-ink">{compressionSection.intro}</p>
         </Reveal>
         <Reveal delay={0.1} className="mt-8 lg:mt-10">
           <div className="card-surface px-5 py-2 sm:px-8 sm:py-4">
@@ -101,7 +104,19 @@ export default function IntegrationPage() {
               className="[&_tbody_tr:last-child]:border-b-0"
             />
           </div>
-          <p className="measure mt-6 text-[1rem] leading-relaxed text-muted-foreground">{compressionSection.disclaimer}</p>
+          <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-start lg:gap-10">
+            <p className="measure text-[1rem] leading-relaxed text-muted-foreground">{compressionSection.disclaimer}</p>
+            <div className="card-surface flex flex-col gap-3 p-6" aria-labelledby="compression-guide-title">
+              <span className="inline-flex size-10 items-center justify-center rounded-lg bg-primary-soft text-primary-deep" aria-hidden="true">
+                <BookOpen className="size-5" />
+              </span>
+              <h3 id="compression-guide-title" className="text-xl sm:text-xl">{compressionSection.guide.title}</h3>
+              <p className="text-[1rem] leading-relaxed text-muted-foreground">{compressionSection.guide.body}</p>
+              <Link to={compressionSection.guide.action.to} className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary hover:text-primary-deep">
+                {compressionSection.guide.action.label} <ArrowRight className="size-[1.1em]" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
         </Reveal>
       </Section>
 
@@ -143,6 +158,35 @@ export default function IntegrationPage() {
                 {storageCommitmentSection.link.label} <ArrowRight className="size-[1.1em]" aria-hidden="true" />
               </Link>
             </p>
+          </div>
+        </Reveal>
+      </Section>
+
+      {/* Conformance document card: status shown as text beside every link to the draft. */}
+      <Section id={conformanceSection.id} tone="white" aria-labelledby={`${conformanceSection.id}-title`}>
+        <Reveal className="grid gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+          <SectionHeading id={`${conformanceSection.id}-title`} title={conformanceSection.title} split />
+          <div className="card-surface p-6 sm:p-8">
+            <DocumentStatus status={conformanceSection.document.status} kind={conformanceSection.document.statusKind} />
+            <p className="measure mt-4 text-ink">{conformanceSection.body}</p>
+            <dl className="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-sm text-muted-foreground">
+              <div className="flex gap-1.5"><dt>Document</dt><dd className="m-0 font-medium text-ink">{conformanceSection.document.documentId}</dd></div>
+              <div className="flex gap-1.5"><dt>Revision</dt><dd className="m-0 font-medium text-ink">{conformanceSection.document.revision}</dd></div>
+              <div className="flex gap-1.5"><dt>Date</dt><dd className="m-0 font-medium text-ink">{conformanceSection.document.date}</dd></div>
+            </dl>
+            <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-line pt-6">
+              <Button asChild>
+                <Link to={conformanceSection.read.to}>
+                  {conformanceSection.read.label} <ArrowRight aria-hidden="true" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" className="h-auto whitespace-normal text-left">
+                <a href={conformanceSection.document.pdfUrl} download={conformanceSection.document.pdfFilename} type="application/pdf">
+                  <Download aria-hidden="true" />
+                  {conformanceSection.document.downloadLabel}
+                </a>
+              </Button>
+            </div>
           </div>
         </Reveal>
       </Section>

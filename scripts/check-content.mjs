@@ -11,7 +11,8 @@ const FORBIDDEN = [
   /\bhipaa\b/i, /\bgdpr\b/i, /coming soon/i, /lorem ipsum/i, /\btodo\b/i, /\bfda\b/i, /\bce[- ]mark/i, /iso 13485/i, /chatgpt/i, /content pending/i,
   /\bsla\b/i, /testimonial/i, /trusted by/i, /\bfree\b/i,
 ];
-const REQUIRED_HOME = ['100% in Swift', 'QIDO-RS', 'WADO-RS', 'STOW-RS', 'UPS-RS', 'Quick Take', 'Storage Commitment'];
+const REQUIRED_HOME = ['100% in Swift', 'QIDO-RS', 'WADO-RS', 'STOW-RS', 'UPS-RS', 'Quick Take', 'Storage Commitment', 'Enterprise Manager'];
+const CONFORMANCE_PDF = 'DICOM-Camera-DICOM-Conformance-Statement-Draft-0.1.pdf';
 
 async function walk(dir) {
   const out = [];
@@ -69,6 +70,56 @@ const src = (await walk(path.join(ROOT, 'src'))).filter((f) => /\.(tsx?|css)$/.t
 for (const f of src) {
   const s = await readFile(f, 'utf8');
   for (const re of FORBIDDEN.slice(0, 15)) { const m = s.match(re); if (m) { failures++; console.error(`FORBIDDEN "${m[0]}" in source ${path.relative(ROOT, f)}`); } }
+}
+// Draft conformance document: status, identity and no version placeholders in the HTML edition; a real static
+// PDF with the same status; no internal evidence material in public files.
+{
+  const html = await readFile(path.join(rendered, 'conformance.html'), 'utf8');
+  const text = visibleText(html);
+  for (const s of ['Draft - implementation review pending', 'DCAM-DCS-001', 'Draft 0.1', '24 September 2026', 'DICOM 2026d', 'Download draft conformance statement (PDF)', 'DRAFT - IMPLEMENTATION REVIEW PENDING']) {
+    if (!text.includes(s)) { failures++; console.error(`Conformance page missing "${s}"`); }
+  }
+  for (const re of [/\bapp version\b/i, /version\s*:\s*tbc/i, /unassigned (app )?version/i, /\bv\d+\.\d+(\.\d+)?\b/]) { const m = text.match(re); if (m) { failures++; console.error(`Conformance page contains a version placeholder "${m[0]}"`); } }
+  if (!/name="robots" content="noindex/.test(html)) { failures++; console.error('Conformance page is not marked noindex'); }
+  for (const re of [/\bE(0[1-9]|1\d|2[0-2])\b/, /internal working document/i, /evidence checklist/i, /coding[- ]agent/i, /CODING-AGENT/]) {
+    if (re.test(text)) { failures++; console.error(`Internal evidence material leaked into the conformance page (${re})`); }
+  }
+  const distDocs = path.join(dist, 'documents');
+  try {
+    const head = (await readFile(path.join(distDocs, CONFORMANCE_PDF))).subarray(0, 5).toString();
+    if (head !== '%PDF-') { failures++; console.error('Conformance PDF in dist is not a PDF file'); }
+  } catch { failures++; console.error(`Conformance PDF missing from dist/documents (run npm run documents:pdf and commit the file)`); }
+  try {
+    const { execFileSync } = await import('node:child_process');
+    const pdfText = execFileSync('pdftotext', ['-layout', path.join(distDocs, CONFORMANCE_PDF), '-'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
+    for (const s of ['DRAFT - IMPLEMENTATION REVIEW PENDING', 'DCAM-DCS-001', 'Draft 0.1', '24 September 2026', 'DICOM 2026d']) if (!pdfText.includes(s)) { failures++; console.error(`Conformance PDF text missing "${s}"`); }
+    for (const re of [/\bE(0[1-9]|1\d|2[0-2])\b/, /internal working document/i]) if (re.test(pdfText)) { failures++; console.error(`Internal evidence material in the conformance PDF (${re})`); }
+    console.log('Conformance PDF text checked with pdftotext.');
+  } catch (e) { console.log(`Conformance PDF text not checked (pdftotext unavailable: ${String(e.message).split('\n')[0]}).`); }
+  const files = await readdir(distDocs).catch(() => []);
+  const unexpected = files.filter((f) => ![CONFORMANCE_PDF, 'compression-comparison.csv'].includes(f));
+  if (unexpected.length) { failures++; console.error(`Unexpected files in dist/documents: ${unexpected.join(', ')}`); }
+}
+// Compression guide: every source format is on the page, the download is the source CSV, no invented percentages.
+{
+  const csv = await readFile(path.join(ROOT, 'documents-source', 'compression-comparison.csv'), 'utf8');
+  const distCsv = await readFile(path.join(dist, 'documents', 'compression-comparison.csv'), 'utf8').catch(() => '');
+  if (csv !== distCsv) { failures++; console.error('dist/documents/compression-comparison.csv differs from documents-source/compression-comparison.csv'); }
+  const page = visibleText(await readFile(path.join(rendered, 'compression.html'), 'utf8'));
+  for (const f of ['Uncompressed', 'DICOM RLE', 'JPEG, lossy', 'JPEG, lossless', 'JPEG-LS', 'JPEG 2000', 'HTJ2K', 'JPEG XL', 'Video on iOS', 'Standards references']) if (!page.includes(f)) { failures++; console.error(`Compression page missing "${f}"`); }
+  if (/\d+\s?%/.test(page)) { failures++; console.error('Compression page contains a percentage (no invented benchmarks)'); }
+}
+// Enterprise Manager wording: recommended name present; no unapproved claims.
+{
+  const enterprise = visibleText(await readFile(path.join(rendered, 'enterprise.html'), 'utf8'));
+  if (!enterprise.includes('DICOM Camera Enterprise Manager')) { failures++; console.error('Enterprise page missing the Enterprise Manager section'); }
+  if (!enterprise.includes('Workflow illustration, not an administration console')) { failures++; console.error('Enterprise Manager diagram is not labelled as an illustration'); }
+  for (const re of [/\bunlimited\b/i, /free enterprise server/i, /\bsso\b/i, /\bmdm\b/i, /remote(ly)? (erase|wipe)/i, /instant(ly|aneous)? revocation/i]) { const m = enterprise.match(re); if (m) { failures++; console.error(`Enterprise page contains an unapproved claim "${m[0]}"`); } }
+}
+// robots.txt: draft documents stay out of search results in the indexable build.
+{
+  const robots = await readFile(path.join(dist, 'robots.txt'), 'utf8');
+  if (/^Allow: \/$/m.test(robots) && !/^Disallow: \/documents\/$/m.test(robots)) { failures++; console.error('robots.txt allows /documents/ in an indexable build'); }
 }
 // Performance regression guard: Three.js must stay off the critical path (lazy scene chunks only).
 {

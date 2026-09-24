@@ -11,6 +11,8 @@ import { HomeHero } from '@/components/home/HomeHero';
 import { CapabilityStrip } from '@/components/home/CapabilityStrip';
 import { ArrowLink } from '@/components/home/ArrowLink';
 import { homeContent as c } from '@/content/home';
+import { siteConfig } from '@/config/site';
+import { KeyRound, LockKeyhole, QrCode } from 'lucide-react';
 
 export const meta: PageMeta = {
   title: 'DICOM Camera | Clinical Photos and Video for PACS',
@@ -57,7 +59,7 @@ export default function HomePage() {
               bleed
               caption
               className="w-full max-w-[560px]"
-              imgClassName="drop-shadow-[0_24px_40px_rgba(20,34,53,0.18)]"
+              imgClassName="drop-shadow-screen"
             />
           </Reveal>
         </div>
@@ -73,6 +75,31 @@ export default function HomePage() {
         </Reveal>
         <Reveal className="mt-10">
           <ArrowLink to={c.enterprise.link.to} label={c.enterprise.link.label} />
+        </Reveal>
+        {/* Enterprise Manager: optional server for centralised licensing, configuration and policy control */}
+        <Reveal className="mt-12" delay={0.05}>
+          <div className="card-surface grid gap-6 p-6 sm:p-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center lg:gap-12">
+            <div className="max-w-measure">
+              <p className="eyebrow mb-3">{siteConfig.enterpriseManager.name}</p>
+              <h3 id="enterprise-manager-intro-title" className="text-2xl sm:text-[1.75rem]">{c.enterprise.manager.title}</h3>
+              <p className="mt-3 text-muted-foreground">{c.enterprise.manager.body}</p>
+              <ArrowLink to={c.enterprise.manager.link.to} label={c.enterprise.manager.link.label} className="mt-5" />
+            </div>
+            <ul className="grid gap-3 text-[0.95rem] text-ink sm:grid-cols-3 lg:grid-cols-1" aria-label="Enterprise Manager controls">
+              {[
+                { icon: KeyRound, label: 'Managed feature access and floating licences' },
+                { icon: QrCode, label: 'Personal setup link or QR code for each user' },
+                { icon: LockKeyhole, label: 'Locked connection, compression, export and deletion settings' },
+              ].map((item) => (
+                <li key={item.label} className="flex items-start gap-3">
+                  <span className="mt-0.5 inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary-deep" aria-hidden="true">
+                    <item.icon className="size-4" />
+                  </span>
+                  <span>{item.label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </Reveal>
       </Section>
 
@@ -130,7 +157,7 @@ export default function HomePage() {
               reading as an empty box when the deferred scene does not render (no WebGL, save-data). */}
           <Reveal
             delay={0.1}
-            className="relative hidden aspect-[4/3] overflow-hidden rounded-2xl border border-line bg-white/70 shadow-card lg:block"
+            className="relative hidden aspect-[4/3] overflow-hidden rounded-2xl border border-line bg-card/70 shadow-card lg:block"
           >
             <div
               className="absolute inset-0 opacity-70 [background-image:radial-gradient(theme(colors.line)_1px,transparent_1px)] [background-size:22px_22px]"

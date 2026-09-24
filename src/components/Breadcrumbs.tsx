@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronRight, Home } from 'lucide-react';
 import { routes } from '@/config/site';
-import { headerNav, pageLabels } from '@/content/nav';
+import { headerNav, pageLabels, pageParents } from '@/content/nav';
 import { cn } from '@/lib/utils';
 
 export interface BreadcrumbItem {
@@ -49,7 +49,8 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
 
 /**
  * Breadcrumb for the current route when the page is not reachable from the header navigation
- * (e.g. Storage and retention, Download, Contact). Returns null on header-nav pages and on the homepage.
+ * (e.g. Storage and retention, Download, Contact). Pages listed in pageParents show their parent first
+ * (Home › Integration › Compression guide). Returns null on header-nav pages and on the homepage.
  */
 export function AutoBreadcrumbs({ className }: { className?: string }) {
   const { pathname } = useLocation();
@@ -57,5 +58,7 @@ export function AutoBreadcrumbs({ className }: { className?: string }) {
   if (path === routes.home) return null;
   if (headerNav.some((item) => item.to === path)) return null;
   const label = pageLabels[path] ?? 'Page not found';
-  return <Breadcrumbs items={[{ label }]} className={className} />;
+  const parent = pageParents[path];
+  const items: BreadcrumbItem[] = parent && pageLabels[parent] ? [{ label: pageLabels[parent], to: parent }, { label }] : [{ label }];
+  return <Breadcrumbs items={items} className={className} />;
 }

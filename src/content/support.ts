@@ -66,6 +66,36 @@ export const supportContent = {
         answer:
           'Use the App Store or Google Play listing for current information. Contact Raster for hospital and commercial deployment enquiries.',
       },
+      // Enterprise Manager and compression (September 2026 additions).
+      {
+        question: 'Can our hospital unlock features without individual in-app purchases?',
+        answer:
+          'Enterprise Manager allows an organisation to enable managed advanced features centrally and administer floating licences and revocation. Contact Raster to discuss enterprise licensing for your deployment.',
+      },
+      {
+        question: 'How does one-step configuration work?',
+        answer:
+          'Each user receives a unique enrolment link or QR code. Opening or scanning it applies the assigned app configuration, including supported connection and policy settings.',
+      },
+      {
+        question: 'Can an administrator prevent settings changes?',
+        answer:
+          'Yes. Supported settings can be locked, including DICOM connection settings, compression, Photo Album export restrictions and automatic-deletion options.',
+      },
+      {
+        question: "Does revoking a licence delete the user's images?",
+        answer:
+          "Licence management and image retention are separate. Image deletion follows the app's configured retention workflow, including Storage Commitment when enabled.",
+      },
+      {
+        question: 'Is near-lossless the same as lossless?',
+        answer: 'No. Near-lossless permits controlled pixel-value differences. Lossless reconstructs the values presented to the encoder exactly.',
+      },
+      {
+        question: 'Will selecting the newest compression format guarantee smaller files or faster uploads?',
+        answer:
+          'No. Results depend on the images, settings, devices, network and archive. Compare representative files and confirm receiving-system support.',
+      },
     ] satisfies FaqItem[],
   },
   beforeContacting: {

@@ -24,7 +24,7 @@ const initialValues: Values = {
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const fieldClass =
-  'block w-full min-h-11 rounded-lg border border-line bg-white px-3.5 py-2.5 text-[1rem] text-ink shadow-sm placeholder:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white aria-[invalid=true]:border-destructive';
+  'block w-full min-h-11 rounded-lg border border-line bg-card px-3.5 py-2.5 text-[1rem] text-ink shadow-sm placeholder:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card aria-[invalid=true]:border-destructive';
 
 function Label({ htmlFor, children, optional }: { htmlFor: string; children: string; optional?: boolean }) {
   return (
@@ -38,6 +38,8 @@ function Label({ htmlFor, children, optional }: { htmlFor: string; children: str
 interface ContactFormProps {
   /** Absolute URL of the configured form service. The form is not rendered anywhere unless one is set. */
   endpoint: string;
+  /** Pre-selected enquiry topic (must be one of contactContent.form.topics), e.g. from ?topic=enterprise-manager. */
+  defaultTopic?: string;
   className?: string;
 }
 
@@ -45,10 +47,11 @@ interface ContactFormProps {
  * Enquiry form for a configured endpoint. Dormant unless siteConfig.contactFormEndpoint is set.
  * Posts JSON, no attachments. Success is shown only after the endpoint responds with an OK status.
  */
-export function ContactForm({ endpoint, className }: ContactFormProps) {
+export function ContactForm({ endpoint, defaultTopic, className }: ContactFormProps) {
   const copy = contactContent.form;
   const uid = useId();
-  const [values, setValues] = useState<Values>(initialValues);
+  const presetTopic = defaultTopic && (copy.topics as readonly string[]).includes(defaultTopic) ? defaultTopic : '';
+  const [values, setValues] = useState<Values>({ ...initialValues, topic: presetTopic });
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>('idle');
   const [honeypot, setHoneypot] = useState('');

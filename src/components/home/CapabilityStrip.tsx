@@ -10,7 +10,7 @@ interface CapabilityStripProps {
 /** Compact strip of real enterprise capabilities: plain labelled items, no seals or badges. */
 export function CapabilityStrip({ label, items, className }: CapabilityStripProps) {
   return (
-    <div className={cn('border-y border-line bg-white', className)}>
+    <div className={cn('border-y border-line bg-card', className)}>
       <div className="container-content">
         <ul
           aria-label={label}

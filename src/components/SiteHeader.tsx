@@ -37,8 +37,8 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        'fixed inset-x-0 top-0 z-40 h-[var(--header-h)] border-b transition-[background-color,border-color,box-shadow] duration-200',
-        scrolled ? 'border-line bg-surface/90 shadow-[0_1px_0_rgba(20,34,53,0.04)] backdrop-blur-md' : 'border-transparent bg-surface/70 backdrop-blur-sm',
+        'fixed inset-x-0 top-0 z-40 h-[var(--header-h)] border-b transition-[background-color,border-color,box-shadow] duration-200 print:static',
+        scrolled ? 'border-line bg-surface/90 shadow-[0_1px_0_rgb(var(--c-shadow)/0.04)] backdrop-blur-md' : 'border-transparent bg-surface/70 backdrop-blur-sm',
       )}
     >
       <div className="container-content flex h-full items-center justify-between gap-4">
@@ -63,7 +63,7 @@ export function SiteHeader() {
               </Button>
             </DialogPrimitive.Trigger>
             <DialogPrimitive.Portal>
-              <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-ink/50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+              <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-overlay/50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
               <DialogPrimitive.Content
                 id="mobile-navigation"
                 aria-label="Site navigation"
@@ -73,7 +73,7 @@ export function SiteHeader() {
                   closedByNavigation.current = false;
                   document.getElementById('main')?.focus({ preventScroll: true });
                 }}
-                className="fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col bg-white shadow-card outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right data-[state=closed]:duration-200 data-[state=open]:duration-300"
+                className="fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col bg-popover shadow-card outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right data-[state=closed]:duration-200 data-[state=open]:duration-300"
               >
                 <div className="flex h-[var(--header-h)] items-center justify-between border-b border-line px-5">
                   <DialogPrimitive.Title asChild>

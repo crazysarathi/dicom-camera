@@ -37,8 +37,8 @@ export function BackToTop() {
       aria-hidden={!visible}
       tabIndex={visible ? 0 : -1}
       className={cn(
-        'fixed bottom-5 right-5 z-40 inline-flex size-12 items-center justify-center rounded-full border border-line bg-white text-ink shadow-card',
-        'transition-[opacity,transform,background-color] duration-300 ease-out hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
+        'fixed bottom-5 right-5 z-40 inline-flex size-12 items-center justify-center rounded-full border border-line bg-card text-ink shadow-card',
+        'transition-[opacity,transform,background-color] duration-300 ease-out hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
         'sm:bottom-8 sm:right-8',
         visible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-3 opacity-0',
       )}

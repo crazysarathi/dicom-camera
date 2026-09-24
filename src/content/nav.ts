@@ -15,10 +15,18 @@ export const pageLabels: Record<string, string> = {
   [routes.workflows]: 'How it works',
   [routes.enterprise]: 'Enterprise',
   [routes.integration]: 'Integration',
+  [routes.compression]: 'Compression guide',
+  [routes.conformance]: 'DICOM conformance',
   [routes.privacy]: 'Storage and retention',
   [routes.download]: 'Download',
   [routes.support]: 'Support',
   [routes.contact]: 'Contact Raster',
+};
+
+/** Pages that sit under another page in the breadcrumb trail (Home › parent › page). */
+export const pageParents: Record<string, string> = {
+  [routes.compression]: routes.integration,
+  [routes.conformance]: routes.integration,
 };
 
 export const footerGroups = [
@@ -36,6 +44,8 @@ export const footerGroups = [
     links: [
       { label: 'Enterprise', to: routes.enterprise },
       { label: 'Integration', to: routes.integration },
+      { label: 'Compression guide', to: routes.compression },
+      { label: 'DICOM conformance', to: routes.conformance },
       { label: 'Storage and retention', to: routes.privacy },
       { label: 'Contact Raster', to: routes.contact },
     ],

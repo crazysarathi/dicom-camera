@@ -1,7 +1,7 @@
 // Approved copy for /privacy-and-retention/ (WEBSITE-COPY.md §5). Product-behaviour explanation, not a legal policy.
 import type { LucideIcon } from 'lucide-react';
 import { CircleCheck, Hourglass, Import, Send, Smartphone, Trash2 } from 'lucide-react';
-import { routes } from '@/config/site';
+import { enterpriseManagerHref, routes } from '@/config/site';
 
 export interface ProseBlock {
   id: string;
@@ -94,6 +94,16 @@ export const privacyContent = {
       ] satisfies RetentionNode[],
     },
     disclaimer: 'Illustration of app behaviour. It does not act on any data.',
+  },
+  /** Enterprise Manager policy locks. The success/commitment conditions above are unchanged by a lock. */
+  managed: {
+    id: 'organisation-managed-policies',
+    title: 'Organisation-managed policies',
+    paragraphs: [
+      'For enterprise deployments, Enterprise Manager can apply and lock supported settings for compression, Photo Album export and automatic deletion. Users cannot change values that their organisation has locked.',
+      'Automatic deletion still follows successful send, or successful DICOM Storage Commitment when that gate is enabled. A policy lock does not change the requirement for the relevant success confirmation.',
+    ],
+    action: { label: 'Explore enterprise controls', to: enterpriseManagerHref },
   },
   fit: {
     title: 'Fit retention to the deployment',

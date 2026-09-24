@@ -18,8 +18,8 @@ interface SectionProps {
 
 const tones: Record<Tone, string> = {
   surface: 'bg-surface',
-  white: 'bg-white border-y border-line',
-  ink: 'bg-ink text-white',
+  white: 'bg-card border-y border-line',
+  ink: 'bg-band text-band-foreground',
   tint: 'bg-primary-soft/60',
 };
 

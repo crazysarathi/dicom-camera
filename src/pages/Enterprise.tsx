@@ -7,19 +7,22 @@ import { Section, SectionHeading } from '@/components/Section';
 import { ScreenshotFigure } from '@/components/ScreenshotFigure';
 import { Reveal } from '@/components/Reveal';
 import { Button } from '@/components/ui/button';
+import { CapabilityTable } from '@/components/CapabilityTable';
+import { ManagedDeploymentDiagram } from '@/components/ManagedDeploymentDiagram';
 import {
   enterpriseDiscussion,
   enterpriseHero,
   enterpriseInfrastructure,
   enterpriseInterfaces,
   enterpriseLinks,
+  enterpriseManager,
   enterpriseRetention,
   type EnterpriseSection,
 } from '@/content/enterprise';
 
 export const meta: PageMeta = {
   title: 'Hospital and Enterprise Workflows | DICOM Camera',
-  description: 'Connect point-of-care capture with MWL, optional MPPS, UPS, HL7, FHIR, and PACS. Discuss DICOM Camera deployment with Raster.',
+  description: 'Connect point-of-care capture with MWL, optional MPPS, UPS, HL7, FHIR, and PACS. Manage licences and configuration centrally with DICOM Camera Enterprise Manager.',
   path: '/enterprise/',
 };
 
@@ -103,13 +106,72 @@ export default function EnterprisePage() {
       <ProseSection section={enterpriseInfrastructure} tone="surface" link={enterpriseLinks.integration} />
       <ProseSection section={enterpriseRetention} tone="white" link={enterpriseLinks.retention} />
 
+      {/* DICOM Camera Enterprise Manager: an addressable section (#enterprise-manager), not a new top-level route. */}
+      <Section id={enterpriseManager.id} tone="surface" aria-labelledby={`${enterpriseManager.id}-title`}>
+        <Reveal>
+          <SectionHeading id={`${enterpriseManager.id}-title`} eyebrow={enterpriseManager.eyebrow} title={enterpriseManager.title} lede={enterpriseManager.lede} split />
+          <p className="measure mt-5 text-body text-ink">{enterpriseManager.intro}</p>
+          <p className="measure mt-3 text-[0.95rem] text-muted-foreground">{enterpriseManager.definition}</p>
+        </Reveal>
+        <Reveal stagger className="mt-12 grid gap-6 md:grid-cols-3 lg:gap-8">
+          {enterpriseManager.capabilities.map((item) => {
+            const Icon = item.icon;
+            return (
+              <article key={item.id} id={item.id} className="card-surface flex flex-col p-6" aria-labelledby={`${item.id}-title`}>
+                <span className="inline-flex size-12 items-center justify-center rounded-xl bg-primary-soft text-primary-deep" aria-hidden="true">
+                  <Icon className="size-6" />
+                </span>
+                <h3 id={`${item.id}-title`} className="mt-5 text-xl sm:text-[1.375rem]">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-[1rem] leading-relaxed text-muted-foreground">{item.body}</p>
+              </article>
+            );
+          })}
+        </Reveal>
+        <Reveal className="mt-14 grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16" delay={0.05}>
+          <div>
+            <h3 id={`${enterpriseManager.controls.id}-title`}>{enterpriseManager.controls.title}</h3>
+          </div>
+          <div className="card-surface px-5 py-2 sm:px-8 sm:py-4">
+            <CapabilityTable
+              id={enterpriseManager.controls.id}
+              caption={enterpriseManager.controls.title}
+              captionVisuallyHidden
+              columns={enterpriseManager.controls.columns}
+              rows={[...enterpriseManager.controls.rows]}
+              className="[&_tbody_tr:last-child]:border-b-0"
+            />
+          </div>
+        </Reveal>
+        <Reveal className="mt-14" delay={0.05}>
+          <h3 id={`${enterpriseManager.workflow.id}-title`}>{enterpriseManager.workflow.title}</h3>
+          <ManagedDeploymentDiagram id={enterpriseManager.workflow.id} steps={enterpriseManager.workflow.steps} supporting={enterpriseManager.workflow.supporting} className="mt-6" />
+        </Reveal>
+        <Reveal className="mt-14" delay={0.05}>
+          <div id={enterpriseManager.plan.id} className="card-surface grid gap-6 p-6 sm:p-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center" aria-labelledby={`${enterpriseManager.plan.id}-title`}>
+            <div className="max-w-measure">
+              <h3 id={`${enterpriseManager.plan.id}-title`}>{enterpriseManager.plan.title}</h3>
+              <p className="mt-3 text-muted-foreground">{enterpriseManager.plan.body}</p>
+            </div>
+            <div className="flex lg:justify-end">
+              <Button asChild size="lg">
+                <Link to={enterpriseManager.plan.action.to}>
+                  {enterpriseManager.plan.action.label} <ArrowRight aria-hidden="true" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </Reveal>
+      </Section>
+
       <Section id={enterpriseDiscussion.id} tone="ink" aria-labelledby={`${enterpriseDiscussion.id}-title`}>
         <div className="grid gap-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:gap-16">
           <Reveal className="max-w-xl">
-            <h2 id={`${enterpriseDiscussion.id}-title`} className="text-white" data-split="">
+            <h2 id={`${enterpriseDiscussion.id}-title`} className="text-band-foreground" data-split="">
               {enterpriseDiscussion.title}
             </h2>
-            <p className="mt-4 text-lg text-white/80">{enterpriseDiscussion.lede}</p>
+            <p className="mt-4 text-lg text-band-foreground/80">{enterpriseDiscussion.lede}</p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Button asChild size="lg" variant="secondary">
                 <Link to={enterpriseDiscussion.action.to}>
@@ -117,13 +179,13 @@ export default function EnterprisePage() {
                 </Link>
               </Button>
             </div>
-            <p className="mt-6 text-base text-white/80">{enterpriseDiscussion.note}</p>
+            <p className="mt-6 text-base text-band-foreground/80">{enterpriseDiscussion.note}</p>
           </Reveal>
           <Reveal delay={0.1}>
-            <ul className="rounded-2xl border border-white/15 bg-white/[0.06] p-2 sm:p-3" data-reveal-stagger="">
+            <ul className="rounded-2xl border border-band-foreground/15 bg-band-foreground/[0.06] p-2 sm:p-3" data-reveal-stagger="">
               {enterpriseDiscussion.topics.map((topic) => (
-                <li key={topic} className="flex items-start gap-3 rounded-xl px-4 py-3 text-[1.0625rem] leading-relaxed text-white/90">
-                  <Check className="mt-1.5 size-4 shrink-0 text-teal-soft" aria-hidden="true" />
+                <li key={topic} className="flex items-start gap-3 rounded-xl px-4 py-3 text-[1.0625rem] leading-relaxed text-band-foreground/90">
+                  <Check className="mt-1.5 size-4 shrink-0 text-band-accent" aria-hidden="true" />
                   <span>{topic}</span>
                 </li>
               ))}

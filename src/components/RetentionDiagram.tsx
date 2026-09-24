@@ -16,12 +16,12 @@ interface RetentionDiagramProps {
  * deletion is plain ink. No red or warning styling: a retained image is the safe outcome, not an error.
  */
 const toneClasses: Record<RetentionNodeTone, string> = {
-  neutral: 'border-line bg-white text-ink',
+  neutral: 'border-line bg-card text-ink',
   waiting: 'border-dashed border-ink/25 bg-secondary text-muted-foreground',
   // Ink text keeps AA contrast on the teal tint; the teal accent lives in the border and icon (graphics need only 3:1).
   confirmed: 'border-teal/40 bg-teal-soft text-ink [&>svg]:text-teal',
-  delete: 'border-ink bg-ink text-white',
-  retain: 'border-teal bg-teal text-white',
+  delete: 'border-ink bg-ink text-ink-foreground',
+  retain: 'border-teal bg-teal text-teal-foreground',
 };
 
 /** Arrow between two steps: horizontal on wider screens, vertical when the flow stacks. Purely decorative. */

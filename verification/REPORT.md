@@ -1,20 +1,20 @@
 # Automated verification report
 
 Base: http://localhost:4173  
-Generated: 2026-09-24T08:40:48.964Z
+Generated: 2026-09-24T12:56:58.626Z
 
 ## Summary
 
 | Check | Result |
 | --- | --- |
-| Horizontal overflow | none across 54 route×viewport combinations |
+| Horizontal overflow | none across 66 route×viewport combinations |
 | Console/page errors | none |
 | axe violations (WCAG 2.x A/AA + best-practice) | none |
 | Exactly one h1 per page | yes |
 | Broken images | none |
 | Content still hidden after scrolling (reveal/split) | none |
 | Link/destination issues | none |
-| Keyboard flows | 10/10 passed |
+| Keyboard flows | 18/18 passed |
 | Firefox | ran; 0 page errors; overflow desktop 0px / mobile 0px |
 | WebKit | not run: Error: browserType.launch: 
 ╔═════════════════════════════════════════════════════════╗
@@ -72,6 +72,8 @@ Generated: 2026-09-24T08:40:48.964Z
 | /#/workflows/ | exact | exact | 1 | 1 |
 | /#/enterprise/ | exact | exact | 1 | 1 |
 | /#/integration/ | exact | exact | 1 | 1 |
+| /#/compression/ | exact | exact | 1 | 1 |
+| /#/conformance/ | exact | exact | 1 | 1 |
 | /#/privacy-and-retention/ | exact | exact | 1 | 1 |
 | /#/download/ | exact | exact | 1 | 1 |
 | /#/support/ | exact | exact | 1 | 3 |
@@ -90,3 +92,11 @@ Generated: 2026-09-24T08:40:48.964Z
 - PASS — 200% zoom equivalent (720px wide, desktop UA) has no horizontal overflow on home
 - PASS — legacy path URLs redirect to hash routes (/workflows/ → /#/workflows/)
 - PASS — back-to-top control appears after scrolling, is keyboard operable and returns to the top
+- PASS — print media hides the fixed chrome and shows the document print header on the conformance page
+- PASS — mobile navigation sheet lists the navigation links and the download action
+- PASS — compression comparison: the unfiltered table is the default; the filter is keyboard operable and keeps multi-mode families
+- PASS — compression comparison at 390px: card presentation shows every format with its column names
+- PASS — conformance draft: status, identity and PDF download (real file, application/pdf, draft label) and section navigation
+- PASS — Enterprise Manager call to action opens the contact route with its topic; the email route carries the Enterprise Manager subject
+- PASS — homepage "Explore Enterprise Manager" lands on the Enterprise Manager section of the Enterprise page
+- PASS — storage and retention page names the organisation-managed policies and keeps the success/commitment condition

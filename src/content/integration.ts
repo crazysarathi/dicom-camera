@@ -1,5 +1,5 @@
 // Integration page copy (approved public copy, used verbatim).
-import { routes } from '@/config/site';
+import { documents, routes } from '@/config/site';
 
 export interface CapabilityRow {
   term: string;
@@ -36,18 +36,31 @@ export const compressionSection = {
   id: 'compression',
   title: 'Image compression',
   lede: 'Choose an encoding supported by the destination and appropriate to the workflow.',
+  intro:
+    'Compression affects image fidelity, file size, processing and compatibility. Lossless encoding reconstructs the pixel values presented to the encoder exactly; near-lossless allows a controlled amount of pixel-value error and remains a form of lossy compression; lossy encoding trades some image information for smaller files. Uncompressed transfer is also available.',
   columns: ['Format family', 'Available compression modes'] as [string, string],
+  // Lossy JPEG and the separate lossless JPEG process are different encodings and are listed separately.
   rows: [
     { term: 'Uncompressed', description: 'Uncompressed image transfer.' },
     { term: 'DICOM RLE', description: 'Lossless.' },
-    { term: 'JPEG', description: 'Lossy and lossless variants.' },
+    { term: 'JPEG, lossy', description: 'Lossy (adjustable quality/size tradeoff).' },
+    { term: 'JPEG, lossless', description: 'Lossless, through the separate lossless JPEG process.' },
     { term: 'JPEG-LS', description: 'Lossless and near-lossless.' },
     { term: 'JPEG 2000', description: 'Lossless and lossy.' },
     { term: 'HTJ2K', description: 'Lossless and lossy.' },
     { term: 'JPEG XL', description: 'Lossless and lossy.' },
   ] satisfies CapabilityRow[],
+  guide: {
+    title: 'Compare compression options.',
+    body: 'Understand the differences between lossless, near-lossless and lossy formats, and the tradeoffs in file size, processing and compatibility.',
+    action: { label: 'Read the compression guide', to: routes.compression },
+  },
+  /**
+   * Distinguishes the educational comparison from the release-specific conformance document. Keeps the
+   * receiving-system warnings from the earlier disclaimer.
+   */
   disclaimer:
-    'This overview is not a formal DICOM Conformance Statement. Exact transfer syntaxes and receiving-system compatibility should be confirmed for the app version and deployment configuration. A compression option being available in DICOM Camera does not mean every archive accepts it.',
+    'This overview and the compression guide are educational comparisons of encoding families, not a conformance matrix. Release-specific declarations of exact transfer syntaxes belong to the DICOM conformance statement, which is currently a draft under implementation review. Exact transfer syntaxes and receiving-system compatibility should be confirmed for the app version and deployment configuration. A compression option being available in DICOM Camera does not mean every archive accepts it.',
 } as const;
 
 export const videoSection = {
@@ -73,6 +86,16 @@ export const storageCommitmentSection = {
   link: { label: 'Understand storage and retention', to: routes.privacy },
 } as const;
 
+/** Conformance document card. Draft copy: replace with the exact release/platform scope and issue date once a final document is supplied. */
+export const conformanceSection = {
+  id: 'conformance',
+  title: 'DICOM conformance',
+  body:
+    "Review the draft statement covering DICOM Camera's described workflows, connectivity and configuration. Implementation details and release-specific declarations are being completed.",
+  document: documents.conformance,
+  read: { label: 'Read the draft', to: routes.conformance },
+} as const;
+
 export const discussSection = {
   id: 'discuss',
   title: 'Discuss your integration',
@@ -88,4 +111,5 @@ export const integrationContents = [
   { label: videoSection.title, id: videoSection.id },
   { label: annotationsSection.title, id: annotationsSection.id },
   { label: storageCommitmentSection.title, id: storageCommitmentSection.id },
+  { label: conformanceSection.title, id: conformanceSection.id },
 ] as const;

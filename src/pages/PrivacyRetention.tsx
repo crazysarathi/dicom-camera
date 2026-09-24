@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, LockKeyhole } from 'lucide-react';
 import type { PageMeta } from '@/lib/seo';
 import { useDocumentMeta } from '@/lib/seo';
 import { siteConfig } from '@/config/site';
@@ -35,7 +35,7 @@ function Explainer({ block }: { block: ProseBlock }) {
 
 export default function PrivacyRetentionPage() {
   useDocumentMeta(meta);
-  const { hero, storage, deletion, diagram, fit, footnote } = privacyContent;
+  const { hero, storage, deletion, diagram, managed, fit, footnote } = privacyContent;
   return (
     <>
       <PageHero eyebrow={hero.eyebrow} title={hero.title} lede={hero.lede} />
@@ -56,6 +56,29 @@ export default function PrivacyRetentionPage() {
         </Reveal>
         <Reveal className="mt-12 lg:mt-16" delay={0.1}>
           <RetentionDiagram flows={diagram.flows} note={diagram.note} disclaimer={diagram.disclaimer} />
+        </Reveal>
+      </Section>
+
+      <Section id={managed.id} tone="white" aria-labelledby={`${managed.id}-title`}>
+        <Reveal className="grid gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+          <div className="flex items-start gap-4">
+            <span className="mt-1 inline-flex size-11 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary-deep" aria-hidden="true">
+              <LockKeyhole className="size-5" />
+            </span>
+            <h2 id={`${managed.id}-title`} className="text-2xl sm:text-[1.75rem]">{managed.title}</h2>
+          </div>
+          <div className="max-w-measure lg:pt-1">
+            <div className="prose-site space-y-4">
+              {managed.paragraphs.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
+            <p className="mt-6">
+              <Link to={managed.action.to} className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary hover:text-primary-deep">
+                {managed.action.label} <ArrowRight className="size-[1.1em]" aria-hidden="true" />
+              </Link>
+            </p>
+          </div>
         </Reveal>
       </Section>
 

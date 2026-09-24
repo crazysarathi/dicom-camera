@@ -24,7 +24,7 @@ import {
 } from 'three';
 import type { SceneProps } from './index';
 import { SceneCanvas, type SceneCameraOptions } from './SceneCanvas';
-import { fillLightColor, keyLightColor, scenePalette } from './materials';
+import { fillLightColor, keyLightColor, scenePalette, type ScenePalette } from './materials';
 
 export type ConnectivitySceneProps = SceneProps;
 
@@ -54,16 +54,7 @@ const PORT = {
   tablet: [NODE.tablet[0] + 0.34, NODE.tablet[1], NODE.tablet[2] - 0.18] as Vec3,
 };
 
-/** Colours (page-lightened where they must stay quiet). */
-const PAGE = '#F8FAFC';
-const INK = scenePalette.nodeInk;
-const GRAPHITE = '#2C3C55';
-const CRYSTAL = '#33445E';
-const SCREEN = '#0B1424';
-const RING_BLUE = '#3F78DC';
-const RING_TEAL = '#1F93A0';
-const EDGE = '#AEB9C8';
-const GRID = '#D6DEE8';
+/* Colours come from the scene palette (see materials.ts). */
 
 type Tone = 'blue' | 'teal';
 type TargetId = 'serviceTop' | 'serviceMid' | 'serviceLow' | 'archive';
@@ -255,7 +246,29 @@ interface TargetRefs {
   materials: MeshStandardMaterial[];
 }
 
+/** Material set built from the scene palette. */
+function buildMaterials(palette: ScenePalette) {
+  const crystal = () =>
+    new MeshStandardMaterial({ color: palette.crystal, metalness: 0.12, roughness: 0.6, flatShading: true, emissive: new Color(0x000000) });
+  return {
+    body: new MeshStandardMaterial({ color: palette.nodeInk, metalness: 0.25, roughness: 0.45 }),
+    screen: new MeshStandardMaterial({ color: palette.screen, metalness: 0.4, roughness: 0.25 }),
+    lens: new MeshBasicMaterial({ color: palette.lens }),
+    targets: [crystal(), crystal(), crystal(), new MeshStandardMaterial({ color: palette.graphite, metalness: 0.3, roughness: 0.4, emissive: new Color(0x000000) })],
+    ringBlue: new MeshBasicMaterial({ color: palette.ringBlue }),
+    ringTeal: new MeshBasicMaterial({ color: palette.ringTeal }),
+    discLine: new MeshBasicMaterial({ color: palette.ringBlue }),
+    led: new MeshBasicMaterial({ color: palette.pulseBlue }),
+    edge: new MeshBasicMaterial({ color: palette.edge, transparent: true, opacity: 0.55, depthWrite: false }),
+    packetBlue: new MeshStandardMaterial({ color: palette.pulseBlue, emissive: new Color(palette.pulseBlue), emissiveIntensity: 0.35, metalness: 0.3, roughness: 0.2 }),
+    packetTeal: new MeshStandardMaterial({ color: palette.pulseTeal, emissive: new Color(palette.pulseTeal), emissiveIntensity: 0.35, metalness: 0.3, roughness: 0.2 }),
+    trail: new MeshBasicMaterial({ color: '#FFFFFF' }),
+    grid: new LineBasicMaterial({ color: palette.grid, transparent: true, opacity: 0.55 }),
+  };
+}
+
 function Graph({ animate, finePointer }: { animate: boolean; finePointer: boolean }) {
+  const palette = scenePalette;
   const viewport = useThree((state) => state.viewport);
   const fit = Math.min(FIT_MAX, (viewport.width * 0.96) / FIT_WIDTH, (viewport.height * 0.96) / FIT_HEIGHT);
 
@@ -278,25 +291,7 @@ function Graph({ animate, finePointer }: { animate: boolean; finePointer: boolea
     [curves],
   );
 
-  const materials = useMemo(() => {
-    const crystal = () =>
-      new MeshStandardMaterial({ color: CRYSTAL, metalness: 0.12, roughness: 0.6, flatShading: true, emissive: new Color(0x000000) });
-    return {
-      body: new MeshStandardMaterial({ color: INK, metalness: 0.25, roughness: 0.45 }),
-      screen: new MeshStandardMaterial({ color: SCREEN, metalness: 0.4, roughness: 0.25 }),
-      lens: new MeshBasicMaterial({ color: '#4A5A72' }),
-      targets: [crystal(), crystal(), crystal(), new MeshStandardMaterial({ color: GRAPHITE, metalness: 0.3, roughness: 0.4, emissive: new Color(0x000000) })],
-      ringBlue: new MeshBasicMaterial({ color: RING_BLUE }),
-      ringTeal: new MeshBasicMaterial({ color: RING_TEAL }),
-      discLine: new MeshBasicMaterial({ color: RING_BLUE }),
-      led: new MeshBasicMaterial({ color: scenePalette.pulseBlue }),
-      edge: new MeshBasicMaterial({ color: EDGE, transparent: true, opacity: 0.55, depthWrite: false }),
-      packetBlue: new MeshStandardMaterial({ color: scenePalette.pulseBlue, emissive: new Color(scenePalette.pulseBlue), emissiveIntensity: 0.35, metalness: 0.3, roughness: 0.2 }),
-      packetTeal: new MeshStandardMaterial({ color: scenePalette.pulseTeal, emissive: new Color(scenePalette.pulseTeal), emissiveIntensity: 0.35, metalness: 0.3, roughness: 0.2 }),
-      trail: new MeshBasicMaterial({ color: '#FFFFFF' }),
-      grid: new LineBasicMaterial({ color: GRID, transparent: true, opacity: 0.55 }),
-    };
-  }, []);
+  const materials = useMemo(() => buildMaterials(palette), [palette]);
 
   useEffect(
     () => () => {
@@ -323,12 +318,12 @@ function Graph({ animate, finePointer }: { animate: boolean; finePointer: boolea
 
   /** Per-instance trail colours fade from the packet tone toward the page colour. */
   const trailColors = useMemo(() => {
-    const page = new Color(PAGE);
+    const page = new Color(palette.page);
     return EDGES.flatMap((edge) => {
-      const tone = new Color(edge.tone === 'blue' ? scenePalette.pulseBlue : scenePalette.pulseTeal);
+      const tone = new Color(edge.tone === 'blue' ? palette.pulseBlue : palette.pulseTeal);
       return Array.from({ length: TRAIL_POINTS }, (_, k) => tone.clone().lerp(page, 0.25 + (k / TRAIL_POINTS) * 0.65));
     });
-  }, []);
+  }, [palette]);
 
   const trailRef = useRef<InstancedMesh>(null);
   useEffect(() => {
@@ -348,14 +343,18 @@ function Graph({ animate, finePointer }: { animate: boolean; finePointer: boolea
   const deviceRefs = useRef<(Group | null)[]>([]);
   const archiveRef = useRef<Group>(null);
   const targets = useRef<TargetRefs>({ meshes: [], materials: materials.targets });
+  // Keep the frame loop's material handles current if the set is ever rebuilt.
+  useEffect(() => {
+    targets.current.materials = materials.targets;
+  }, [materials]);
   const pulses = useMemo(() => new Float32Array(4), []);
   const lastU = useMemo(() => new Float32Array(EDGES.length).fill(-1), []);
   const time = useRef(STILL_TIME);
   const dummy = useMemo(() => new Object3D(), []);
   const scratch = useMemo(() => new Vector3(), []);
   const toneColors = useMemo(
-    () => [new Color(scenePalette.pulseBlue), new Color(scenePalette.pulseBlue), new Color(scenePalette.pulseBlue), new Color(scenePalette.pulseTeal)],
-    [],
+    () => [new Color(palette.pulseBlue), new Color(palette.pulseBlue), new Color(palette.pulseBlue), new Color(palette.pulseTeal)],
+    [palette],
   );
 
   useFrame((_state, delta) => {
@@ -437,8 +436,8 @@ function Graph({ animate, finePointer }: { animate: boolean; finePointer: boolea
 
   return (
     <>
-      <fog attach="fog" args={[PAGE, 6.8, 13]} />
-      <hemisphereLight args={['#FFFFFF', '#C9D3E0', 1.1]} />
+      <fog attach="fog" args={[palette.page, 6.8, 13]} />
+      <hemisphereLight args={['#FFFFFF', palette.hemisphereGround, 1.1]} />
       <directionalLight position={[-3, 5, 4]} intensity={2.1} color={keyLightColor} />
       <directionalLight position={[4, 2.5, -4]} intensity={1.1} color={fillLightColor} />
       <directionalLight position={[3, -1, 3]} intensity={0.35} color={fillLightColor} />
@@ -455,7 +454,7 @@ function Graph({ animate, finePointer }: { animate: boolean; finePointer: boolea
           opacity={0.3}
           far={2.6}
           resolution={256}
-          color="#142235"
+          color={palette.shadow}
           frames={Infinity}
         />
 

@@ -23,8 +23,8 @@ export function CtaBand({ title, body, tone = 'ink', id, className }: CtaBandPro
   return (
     <Section id={id} tone={tone} className={cn(className)} aria-labelledby={id ? `${id}-title` : undefined}>
       <div className="max-w-2xl">
-        <h2 id={id ? `${id}-title` : undefined} className={cn(dark && 'text-white')}>{title}</h2>
-        <p className={cn('mt-4 text-lg', dark ? 'text-white/80' : 'text-muted-foreground')}>{body}</p>
+        <h2 id={id ? `${id}-title` : undefined} className={cn(dark && 'text-band-foreground')}>{title}</h2>
+        <p className={cn('mt-4 text-lg', dark ? 'text-band-foreground/80' : 'text-muted-foreground')}>{body}</p>
       </div>
     </Section>
   );

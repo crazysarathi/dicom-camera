@@ -1,6 +1,6 @@
 {
   "base": "http://localhost:4173",
-  "generated": "2026-09-24T08:40:48.964Z",
+  "generated": "2026-09-24T12:56:58.626Z",
   "pages": [
     {
       "route": "/",
@@ -107,7 +107,7 @@
         "1440": []
       },
       "links": {
-        "total": 30,
+        "total": 33,
         "appStoreOk": true,
         "googlePlayOk": true,
         "commercialMail": [
@@ -124,7 +124,10 @@
           "#/integration/": 200,
           "#/support/": 200,
           "#/download/": 200,
+          "#/enterprise/#enterprise-manager": 200,
           "#/privacy-and-retention/": 200,
+          "#/compression/": 200,
+          "#/conformance/": 200,
           "#/contact/": 200
         },
         "emptyText": [],
@@ -237,7 +240,7 @@
         "1440": []
       },
       "links": {
-        "total": 27,
+        "total": 29,
         "appStoreOk": true,
         "googlePlayOk": true,
         "commercialMail": [
@@ -255,6 +258,8 @@
           "#/support/": 200,
           "#/download/": 200,
           "#/privacy-and-retention/": 200,
+          "#/compression/": 200,
+          "#/conformance/": 200,
           "#/contact/": 200
         },
         "emptyText": [],
@@ -367,7 +372,7 @@
         "1440": []
       },
       "links": {
-        "total": 28,
+        "total": 31,
         "appStoreOk": true,
         "googlePlayOk": true,
         "commercialMail": [
@@ -385,7 +390,10 @@
           "#/support/": 200,
           "#/download/": 200,
           "#/contact/": 200,
-          "#/privacy-and-retention/": 200
+          "#/privacy-and-retention/": 200,
+          "#/contact/?topic=enterprise-manager": 200,
+          "#/compression/": 200,
+          "#/conformance/": 200
         },
         "emptyText": [],
         "hashLinks": 0
@@ -497,7 +505,7 @@
         "1440": []
       },
       "links": {
-        "total": 31,
+        "total": 37,
         "appStoreOk": true,
         "googlePlayOk": true,
         "commercialMail": [
@@ -520,7 +528,309 @@
           "#/integration/#video-ios": 200,
           "#/integration/#annotations": 200,
           "#/integration/#storage-commitment": 200,
+          "#/integration/#conformance": 200,
+          "#/compression/": 200,
+          "#/privacy-and-retention/": 200,
+          "#/conformance/": 200,
+          "/documents/DICOM-Camera-DICOM-Conformance-Statement-Draft-0.1.pdf": 200
+        },
+        "emptyText": [],
+        "hashLinks": 0
+      },
+      "errors": []
+    },
+    {
+      "route": "/#/compression/",
+      "viewports": [
+        {
+          "name": "360",
+          "width": 360,
+          "height": 740,
+          "status": 200,
+          "scrollWidth": 360,
+          "clientWidth": 360,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Image Compression Guide | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/compression-360.png"
+        },
+        {
+          "name": "390",
+          "width": 390,
+          "height": 844,
+          "status": 200,
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Image Compression Guide | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/compression-390.png"
+        },
+        {
+          "name": "768",
+          "width": 768,
+          "height": 1024,
+          "status": 200,
+          "scrollWidth": 768,
+          "clientWidth": 768,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Image Compression Guide | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/compression-768.png"
+        },
+        {
+          "name": "1024",
+          "width": 1024,
+          "height": 768,
+          "status": 200,
+          "scrollWidth": 1024,
+          "clientWidth": 1024,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Image Compression Guide | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/compression-1024.png"
+        },
+        {
+          "name": "1440",
+          "width": 1440,
+          "height": 900,
+          "status": 200,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Image Compression Guide | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/compression-1440.png"
+        },
+        {
+          "name": "844x390-landscape",
+          "width": 844,
+          "height": 390,
+          "status": 200,
+          "scrollWidth": 844,
+          "clientWidth": 844,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Image Compression Guide | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/compression-844x390-landscape.png"
+        }
+      ],
+      "axe": {
+        "390": [],
+        "1440": []
+      },
+      "links": {
+        "total": 40,
+        "appStoreOk": true,
+        "googlePlayOk": true,
+        "commercialMail": [
+          "mailto:info@raster.in?subject=DICOM%20Camera%20hospital%20enquiry"
+        ],
+        "supportMail": [
+          "mailto:support@raster.in?subject=DICOM%20Camera%20support"
+        ],
+        "badMailto": [],
+        "internalStatuses": {
+          "#/": 200,
+          "#/workflows/": 200,
+          "#/enterprise/": 200,
+          "#/integration/": 200,
+          "#/support/": 200,
+          "#/download/": 200,
+          "/documents/compression-comparison.csv": 200,
+          "#/enterprise/#enterprise-manager": 200,
+          "#/conformance/": 200,
+          "#/contact/": 200,
+          "#/compression/": 200,
           "#/privacy-and-retention/": 200
+        },
+        "emptyText": [],
+        "hashLinks": 0
+      },
+      "errors": []
+    },
+    {
+      "route": "/#/conformance/",
+      "viewports": [
+        {
+          "name": "360",
+          "width": 360,
+          "height": 740,
+          "status": 200,
+          "scrollWidth": 360,
+          "clientWidth": 360,
+          "overflow": false,
+          "wide": [
+            "table.",
+            "thead.",
+            "tr.",
+            "th.",
+            "tbody."
+          ],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Draft DICOM Conformance Statement | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/conformance-360.png"
+        },
+        {
+          "name": "390",
+          "width": 390,
+          "height": 844,
+          "status": 200,
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow": false,
+          "wide": [
+            "table.",
+            "thead.",
+            "tr.",
+            "th.",
+            "tbody."
+          ],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Draft DICOM Conformance Statement | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/conformance-390.png"
+        },
+        {
+          "name": "768",
+          "width": 768,
+          "height": 1024,
+          "status": 200,
+          "scrollWidth": 768,
+          "clientWidth": 768,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Draft DICOM Conformance Statement | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/conformance-768.png"
+        },
+        {
+          "name": "1024",
+          "width": 1024,
+          "height": 768,
+          "status": 200,
+          "scrollWidth": 1024,
+          "clientWidth": 1024,
+          "overflow": false,
+          "wide": [
+            "table.",
+            "thead.",
+            "tr.",
+            "th.",
+            "tbody."
+          ],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Draft DICOM Conformance Statement | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/conformance-1024.png"
+        },
+        {
+          "name": "1440",
+          "width": 1440,
+          "height": 900,
+          "status": 200,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Draft DICOM Conformance Statement | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/conformance-1440.png"
+        },
+        {
+          "name": "844x390-landscape",
+          "width": 844,
+          "height": 390,
+          "status": 200,
+          "scrollWidth": 844,
+          "clientWidth": 844,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Draft DICOM Conformance Statement | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/conformance-844x390-landscape.png"
+        }
+      ],
+      "axe": {
+        "390": [],
+        "1440": []
+      },
+      "links": {
+        "total": 62,
+        "appStoreOk": true,
+        "googlePlayOk": true,
+        "commercialMail": [
+          "mailto:info@raster.in?subject=DICOM%20Camera%20hospital%20enquiry"
+        ],
+        "supportMail": [
+          "mailto:support@raster.in?subject=DICOM%20Camera%20support"
+        ],
+        "badMailto": [],
+        "internalStatuses": {
+          "#/": 200,
+          "#/workflows/": 200,
+          "#/enterprise/": 200,
+          "#/integration/": 200,
+          "#/support/": 200,
+          "#/download/": 200,
+          "/documents/DICOM-Camera-DICOM-Conformance-Statement-Draft-0.1.pdf": 200,
+          "#/contact/": 200,
+          "#/conformance/#s-1-overview": 200,
+          "#/conformance/#s-2-table-of-contents": 200,
+          "#/conformance/#s-3-introduction": 200,
+          "#/conformance/#s-4-implementation-model": 200,
+          "#/conformance/#s-5-service-and-interoperability-description": 200,
+          "#/conformance/#s-6-configuration": 200,
+          "#/conformance/#s-7-network-and-media-communication-details": 200,
+          "#/conformance/#s-8-security": 200,
+          "#/conformance/#annex-a-a-information-object-definitions": 200,
+          "#/conformance/#annex-a-b-structured-report-content-encoding": 200,
+          "#/conformance/#annex-a-c-security-details": 200,
+          "#/conformance/#annex-a-d-mapping-of-attributes": 200,
+          "#/conformance/#annex-a-e-code-set-usage": 200,
+          "#/compression/": 200,
+          "#/privacy-and-retention/": 200,
+          "#/conformance/": 200
         },
         "emptyText": [],
         "hashLinks": 0
@@ -632,7 +942,7 @@
         "1440": []
       },
       "links": {
-        "total": 26,
+        "total": 29,
         "appStoreOk": true,
         "googlePlayOk": true,
         "commercialMail": [
@@ -649,6 +959,9 @@
           "#/integration/": 200,
           "#/support/": 200,
           "#/download/": 200,
+          "#/enterprise/#enterprise-manager": 200,
+          "#/compression/": 200,
+          "#/conformance/": 200,
           "#/privacy-and-retention/": 200,
           "#/contact/": 200
         },
@@ -762,7 +1075,7 @@
         "1440": []
       },
       "links": {
-        "total": 27,
+        "total": 29,
         "appStoreOk": true,
         "googlePlayOk": true,
         "commercialMail": [
@@ -779,6 +1092,8 @@
           "#/integration/": 200,
           "#/support/": 200,
           "#/download/": 200,
+          "#/compression/": 200,
+          "#/conformance/": 200,
           "#/privacy-and-retention/": 200,
           "#/contact/": 200
         },
@@ -892,7 +1207,7 @@
         "1440": []
       },
       "links": {
-        "total": 26,
+        "total": 28,
         "appStoreOk": true,
         "googlePlayOk": true,
         "commercialMail": [
@@ -912,6 +1227,8 @@
           "#/support/": 200,
           "#/download/": 200,
           "#/contact/": 200,
+          "#/compression/": 200,
+          "#/conformance/": 200,
           "#/privacy-and-retention/": 200
         },
         "emptyText": [],
@@ -1024,7 +1341,7 @@
         "1440": []
       },
       "links": {
-        "total": 27,
+        "total": 29,
         "appStoreOk": true,
         "googlePlayOk": true,
         "commercialMail": [
@@ -1043,6 +1360,8 @@
           "#/integration/": 200,
           "#/support/": 200,
           "#/download/": 200,
+          "#/compression/": 200,
+          "#/conformance/": 200,
           "#/privacy-and-retention/": 200,
           "#/contact/": 200
         },
@@ -1156,7 +1475,7 @@
         "1440": []
       },
       "links": {
-        "total": 27,
+        "total": 29,
         "appStoreOk": true,
         "googlePlayOk": true,
         "commercialMail": [
@@ -1173,6 +1492,8 @@
           "#/integration/": 200,
           "#/support/": 200,
           "#/download/": 200,
+          "#/compression/": 200,
+          "#/conformance/": 200,
           "#/privacy-and-retention/": 200,
           "#/contact/": 200
         },
@@ -1195,7 +1516,7 @@
     {
       "name": "FAQ disclosures open/close with keyboard on /support/",
       "pass": true,
-      "faqCount": 10
+      "faqCount": 16
     },
     {
       "name": "copy email control on /#/support/ copies support@raster.in and confirms",
@@ -1226,6 +1547,83 @@
     },
     {
       "name": "back-to-top control appears after scrolling, is keyboard operable and returns to the top",
+      "pass": true
+    },
+    {
+      "name": "print media hides the fixed chrome and shows the document print header on the conformance page",
+      "pass": true,
+      "bg": "rgb(255, 255, 255)",
+      "header": "none",
+      "printHeader": "block",
+      "text": "DCAM-DCS-001 · Draft 0.1 · 24 September 2026 · Draft - implementation review pendingPrinted from the website edition. The PDF edition carries the same revision, date and status."
+    },
+    {
+      "name": "mobile navigation sheet lists the navigation links and the download action",
+      "pass": true,
+      "links": [
+        "How it works",
+        "Enterprise",
+        "Integration",
+        "Support",
+        "Get the app"
+      ]
+    },
+    {
+      "name": "compression comparison: the unfiltered table is the default; the filter is keyboard operable and keeps multi-mode families",
+      "pass": true,
+      "formats": [
+        "Uncompressed",
+        "DICOM RLE",
+        "JPEG, lossy",
+        "JPEG, lossless",
+        "JPEG-LS",
+        "JPEG 2000",
+        "HTJ2K",
+        "JPEG XL"
+      ]
+    },
+    {
+      "name": "compression comparison at 390px: card presentation shows every format with its column names",
+      "pass": true,
+      "tableVisible": false,
+      "cards": [
+        "Uncompressed",
+        "DICOM RLE",
+        "JPEG, lossy",
+        "JPEG, lossless",
+        "JPEG-LS",
+        "JPEG 2000",
+        "HTJ2K",
+        "JPEG XL"
+      ],
+      "dts": [
+        "Modes",
+        "Advantages",
+        "Tradeoffs",
+        "Selection consideration"
+      ],
+      "overflow": 0
+    },
+    {
+      "name": "conformance draft: status, identity and PDF download (real file, application/pdf, draft label) and section navigation",
+      "pass": true,
+      "pdfBytes": 577360,
+      "contentType": "application/pdf",
+      "downloadedAs": "DICOM-Camera-DICOM-Conformance-Statement-Draft-0.1.pdf"
+    },
+    {
+      "name": "Enterprise Manager call to action opens the contact route with its topic; the email route carries the Enterprise Manager subject",
+      "pass": true,
+      "url": "http://localhost:4173/#/contact/?topic=enterprise-manager"
+    },
+    {
+      "name": "homepage \"Explore Enterprise Manager\" lands on the Enterprise Manager section of the Enterprise page",
+      "pass": true,
+      "top": 88,
+      "h": 900
+    },
+    {
+      "name": "storage and retention page names the organisation-managed policies and keeps the success/commitment condition",
       "pass": true
     }
   ],

@@ -11,7 +11,7 @@ const buttonVariants = cva(
   [
     'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-semibold tracking-[-0.005em]',
     'transition-[transform,box-shadow,background-color,color,border-color] duration-200 ease-out',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
     'disabled:pointer-events-none disabled:opacity-50',
     '[&_svg]:pointer-events-none [&_svg]:size-[1.1em] [&_svg]:shrink-0 [&_svg]:transition-transform [&_svg]:duration-200',
     'hover:[&>svg:not(:only-child):last-child]:translate-x-0.5',
@@ -21,10 +21,10 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-primary text-primary-foreground shadow-[inset_0_1px_0_0_rgba(255,255,255,0.18),0_1px_2px_rgba(20,34,53,0.16),0_10px_24px_-12px_rgba(23,92,211,0.8)] hover:-translate-y-px hover:bg-primary-deep hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.18),0_2px_4px_rgba(20,34,53,0.18),0_14px_28px_-12px_rgba(23,92,211,0.85)]',
+          'bg-primary text-primary-foreground shadow-button hover:-translate-y-px hover:bg-primary-deep hover:shadow-button-hover',
         secondary:
-          'border border-line bg-white text-ink shadow-[0_1px_2px_rgba(20,34,53,0.06)] hover:-translate-y-px hover:border-ink/25 hover:shadow-card',
-        outline: 'border border-ink/25 bg-transparent text-ink hover:border-ink/50 hover:bg-white/70',
+          'border border-line bg-card text-ink shadow-secondary hover:-translate-y-px hover:border-ink/25 hover:shadow-card',
+        outline: 'border border-ink/25 bg-transparent text-ink hover:border-ink/50 hover:bg-card/70',
         ghost: 'text-ink hover:bg-secondary',
         link: 'rounded-sm text-primary underline underline-offset-4 hover:text-primary-deep active:translate-y-0',
       },
