@@ -3,7 +3,7 @@
   "screenshots": [
     {
       "id": "iphone-06",
-      "source": "assets/apple/iphone-06-body-part.png",
+      "source": "assets-source/apple/iphone-06-body-part.png",
       "sourceWidth": 1197,
       "sourceHeight": 2600,
       "crop": {
@@ -108,7 +108,7 @@
     },
     {
       "id": "iphone-01",
-      "source": "assets/apple/iphone-01-home.png",
+      "source": "assets-source/apple/iphone-01-home.png",
       "sourceWidth": 1197,
       "sourceHeight": 2600,
       "crop": {
@@ -213,7 +213,7 @@
     },
     {
       "id": "ipad-03",
-      "source": "assets/apple/ipad-03.png",
+      "source": "assets-source/apple/ipad-03.png",
       "sourceWidth": 1600,
       "sourceHeight": 2134,
       "crop": {
@@ -318,7 +318,7 @@
     },
     {
       "id": "ipad-04",
-      "source": "assets/apple/ipad-04.png",
+      "source": "assets-source/apple/ipad-04.png",
       "sourceWidth": 1600,
       "sourceHeight": 2134,
       "crop": {
@@ -423,7 +423,7 @@
     },
     {
       "id": "android-08",
-      "source": "assets/google-play/android-08.png",
+      "source": "assets-source/google-play/android-08.png",
       "sourceWidth": 1620,
       "sourceHeight": 2880,
       "crop": {
@@ -528,7 +528,7 @@
     },
     {
       "id": "android-10",
-      "source": "assets/google-play/android-10.png",
+      "source": "assets-source/google-play/android-10.png",
       "sourceWidth": 1620,
       "sourceHeight": 2880,
       "crop": {
@@ -635,13 +635,13 @@
   "icons": [
     {
       "id": "apple-icon",
-      "source": "assets/apple/dicom-camera-app-icon.jpg",
+      "source": "assets-source/apple/dicom-camera-app-icon.jpg",
       "transformation": "Resized square PNG/WebP derivatives (48–512px). Artwork unchanged.",
       "usage": "Header, footer, favicons, social card, download page."
     },
     {
       "id": "android-icon",
-      "source": "assets/google-play/dicom-camera-app-icon.png",
+      "source": "assets-source/google-play/dicom-camera-app-icon.png",
       "transformation": "Resized square PNG derivatives (64–256px). Artwork unchanged.",
       "usage": "Android section of the download page only."
     }
@@ -658,13 +658,13 @@
   "badges": [
     {
       "id": "app-store-badge",
-      "source": "assets/badges/download-on-the-app-store.svg",
+      "source": "assets-source/badges/download-on-the-app-store.svg",
       "transformation": "Copied unchanged.",
       "usage": "All store-badge groups."
     },
     {
       "id": "google-play-badge",
-      "source": "assets/badges/get-it-on-google-play.png",
+      "source": "assets-source/badges/get-it-on-google-play.png",
       "transformation": "Copied unchanged (646×250). Built-in padding preserved; visible badge occupies ~67% of the box height.",
       "usage": "All store-badge groups."
     }

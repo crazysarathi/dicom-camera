@@ -38,9 +38,9 @@ Edit `src/config/site.ts`:
 
 ## Images
 
-Originals stay in `../assets` and are never modified. `scripts/build-images.mjs` lists the screenshots used on the site with their crop bounds, alt text and captions. To add or change a screenshot:
+Originals stay in `assets-source/` (with `asset-manifest.json` recording provenance and review flags) and are never modified. `scripts/build-images.mjs` lists the screenshots used on the site with their crop bounds, alt text and captions. To add or change a screenshot:
 
-1. Add an entry to `SCREENSHOTS` in `scripts/build-images.mjs` (id, source path, output stem, crop box, alt, caption, platform). Only use originals cleared in `../ASSETS.md`.
+1. Add an entry to `SCREENSHOTS` in `scripts/build-images.mjs` (id, source path, output stem, crop box, alt, caption, platform). Only use originals marked usable in `assets-source/asset-manifest.json` (see the review flags; the editorial guidance is in the parent folder's `ASSETS.md`).
 2. Run `npm run images`. This regenerates `public/images/*`, `src/images/manifest.ts` and `DERIVATIVES.json`.
 3. Reference the new id with `<ScreenshotFigure image="…" />` (or add it to a gallery list in `src/content/home.ts`).
 
