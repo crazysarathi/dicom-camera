@@ -1,0 +1,7 @@
+node_modules
+dist
+dist-ssr
+.npm-install.log
+verification/screenshots/*.png
+verification/lighthouse/*.html
+verification/lighthouse/*.json

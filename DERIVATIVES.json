@@ -1,0 +1,672 @@
+{
+  "generated": "2026-09-24",
+  "screenshots": [
+    {
+      "id": "iphone-06",
+      "source": "assets/apple/iphone-06-body-part.png",
+      "sourceWidth": 1197,
+      "sourceHeight": 2600,
+      "crop": {
+        "left": 40,
+        "top": 655,
+        "right": 1156,
+        "bottom": 2600,
+        "width": 1116,
+        "height": 1945
+      },
+      "transformation": "Faithful crop removing the legacy promotional headline above the device frame; app screen and existing frame unchanged. Resized (downscale only) to responsive widths in AVIF, WebP and PNG.",
+      "platform": "iphone",
+      "complete": false,
+      "alt": "DICOM Camera on iPhone showing body-part selection.",
+      "caption": "Body-part selection on iPhone.",
+      "aspect": "1116 / 1945",
+      "width": 1116,
+      "height": 1945,
+      "outputs": {
+        "avif": [
+          {
+            "w": 320,
+            "h": 558,
+            "file": "/images/iphone-body-part-320.avif"
+          },
+          {
+            "w": 480,
+            "h": 837,
+            "file": "/images/iphone-body-part-480.avif"
+          },
+          {
+            "w": 640,
+            "h": 1115,
+            "file": "/images/iphone-body-part-640.avif"
+          },
+          {
+            "w": 800,
+            "h": 1394,
+            "file": "/images/iphone-body-part-800.avif"
+          },
+          {
+            "w": 1000,
+            "h": 1743,
+            "file": "/images/iphone-body-part-1000.avif"
+          }
+        ],
+        "webp": [
+          {
+            "w": 320,
+            "h": 558,
+            "file": "/images/iphone-body-part-320.webp"
+          },
+          {
+            "w": 480,
+            "h": 837,
+            "file": "/images/iphone-body-part-480.webp"
+          },
+          {
+            "w": 640,
+            "h": 1115,
+            "file": "/images/iphone-body-part-640.webp"
+          },
+          {
+            "w": 800,
+            "h": 1394,
+            "file": "/images/iphone-body-part-800.webp"
+          },
+          {
+            "w": 1000,
+            "h": 1743,
+            "file": "/images/iphone-body-part-1000.webp"
+          }
+        ],
+        "png": [
+          {
+            "w": 320,
+            "h": 558,
+            "file": "/images/iphone-body-part-320.png"
+          },
+          {
+            "w": 480,
+            "h": 837,
+            "file": "/images/iphone-body-part-480.png"
+          },
+          {
+            "w": 640,
+            "h": 1115,
+            "file": "/images/iphone-body-part-640.png"
+          },
+          {
+            "w": 800,
+            "h": 1394,
+            "file": "/images/iphone-body-part-800.png"
+          },
+          {
+            "w": 1000,
+            "h": 1743,
+            "file": "/images/iphone-body-part-1000.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "iphone-01",
+      "source": "assets/apple/iphone-01-home.png",
+      "sourceWidth": 1197,
+      "sourceHeight": 2600,
+      "crop": {
+        "left": 40,
+        "top": 492,
+        "right": 1156,
+        "bottom": 2600,
+        "width": 1116,
+        "height": 2108
+      },
+      "transformation": "Faithful crop removing the legacy promotional headline above the device frame; app screen and existing frame unchanged. Resized (downscale only) to responsive widths in AVIF, WebP and PNG.",
+      "platform": "iphone",
+      "complete": false,
+      "alt": "DICOM Camera capture options on iPhone.",
+      "caption": "Capture options on iPhone. This earlier screen labels the capture-first option “Quick Photos”.",
+      "aspect": "1116 / 2108",
+      "width": 1116,
+      "height": 2108,
+      "outputs": {
+        "avif": [
+          {
+            "w": 320,
+            "h": 604,
+            "file": "/images/iphone-capture-options-320.avif"
+          },
+          {
+            "w": 480,
+            "h": 907,
+            "file": "/images/iphone-capture-options-480.avif"
+          },
+          {
+            "w": 640,
+            "h": 1209,
+            "file": "/images/iphone-capture-options-640.avif"
+          },
+          {
+            "w": 800,
+            "h": 1511,
+            "file": "/images/iphone-capture-options-800.avif"
+          },
+          {
+            "w": 1000,
+            "h": 1889,
+            "file": "/images/iphone-capture-options-1000.avif"
+          }
+        ],
+        "webp": [
+          {
+            "w": 320,
+            "h": 604,
+            "file": "/images/iphone-capture-options-320.webp"
+          },
+          {
+            "w": 480,
+            "h": 907,
+            "file": "/images/iphone-capture-options-480.webp"
+          },
+          {
+            "w": 640,
+            "h": 1209,
+            "file": "/images/iphone-capture-options-640.webp"
+          },
+          {
+            "w": 800,
+            "h": 1511,
+            "file": "/images/iphone-capture-options-800.webp"
+          },
+          {
+            "w": 1000,
+            "h": 1889,
+            "file": "/images/iphone-capture-options-1000.webp"
+          }
+        ],
+        "png": [
+          {
+            "w": 320,
+            "h": 604,
+            "file": "/images/iphone-capture-options-320.png"
+          },
+          {
+            "w": 480,
+            "h": 907,
+            "file": "/images/iphone-capture-options-480.png"
+          },
+          {
+            "w": 640,
+            "h": 1209,
+            "file": "/images/iphone-capture-options-640.png"
+          },
+          {
+            "w": 800,
+            "h": 1511,
+            "file": "/images/iphone-capture-options-800.png"
+          },
+          {
+            "w": 1000,
+            "h": 1889,
+            "file": "/images/iphone-capture-options-1000.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ipad-03",
+      "source": "assets/apple/ipad-03.png",
+      "sourceWidth": 1600,
+      "sourceHeight": 2134,
+      "crop": {
+        "left": 64,
+        "top": 435,
+        "right": 1536,
+        "bottom": 2134,
+        "width": 1472,
+        "height": 1699
+      },
+      "transformation": "Faithful crop removing the legacy promotional headline above the device frame; app screen and existing frame unchanged. Resized (downscale only) to responsive widths in AVIF, WebP and PNG.",
+      "platform": "ipad",
+      "complete": false,
+      "alt": "DICOM Camera on iPad with worklist, patient, Quick Take, and Photo Album entry options.",
+      "caption": "Capture entry options on iPad, including Quick Take.",
+      "aspect": "1472 / 1699",
+      "width": 1472,
+      "height": 1699,
+      "outputs": {
+        "avif": [
+          {
+            "w": 320,
+            "h": 369,
+            "file": "/images/ipad-capture-options-320.avif"
+          },
+          {
+            "w": 480,
+            "h": 554,
+            "file": "/images/ipad-capture-options-480.avif"
+          },
+          {
+            "w": 640,
+            "h": 739,
+            "file": "/images/ipad-capture-options-640.avif"
+          },
+          {
+            "w": 800,
+            "h": 923,
+            "file": "/images/ipad-capture-options-800.avif"
+          },
+          {
+            "w": 1000,
+            "h": 1154,
+            "file": "/images/ipad-capture-options-1000.avif"
+          }
+        ],
+        "webp": [
+          {
+            "w": 320,
+            "h": 369,
+            "file": "/images/ipad-capture-options-320.webp"
+          },
+          {
+            "w": 480,
+            "h": 554,
+            "file": "/images/ipad-capture-options-480.webp"
+          },
+          {
+            "w": 640,
+            "h": 739,
+            "file": "/images/ipad-capture-options-640.webp"
+          },
+          {
+            "w": 800,
+            "h": 923,
+            "file": "/images/ipad-capture-options-800.webp"
+          },
+          {
+            "w": 1000,
+            "h": 1154,
+            "file": "/images/ipad-capture-options-1000.webp"
+          }
+        ],
+        "png": [
+          {
+            "w": 320,
+            "h": 369,
+            "file": "/images/ipad-capture-options-320.png"
+          },
+          {
+            "w": 480,
+            "h": 554,
+            "file": "/images/ipad-capture-options-480.png"
+          },
+          {
+            "w": 640,
+            "h": 739,
+            "file": "/images/ipad-capture-options-640.png"
+          },
+          {
+            "w": 800,
+            "h": 923,
+            "file": "/images/ipad-capture-options-800.png"
+          },
+          {
+            "w": 1000,
+            "h": 1154,
+            "file": "/images/ipad-capture-options-1000.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ipad-04",
+      "source": "assets/apple/ipad-04.png",
+      "sourceWidth": 1600,
+      "sourceHeight": 2134,
+      "crop": {
+        "left": 64,
+        "top": 674,
+        "right": 1536,
+        "bottom": 2134,
+        "width": 1472,
+        "height": 1460
+      },
+      "transformation": "Faithful crop removing the legacy promotional headline above the device frame; app screen and existing frame unchanged. Resized (downscale only) to responsive widths in AVIF, WebP and PNG.",
+      "platform": "ipad",
+      "complete": false,
+      "alt": "Body-part selection in DICOM Camera on iPad.",
+      "caption": "Body-part selection on iPad.",
+      "aspect": "1472 / 1460",
+      "width": 1472,
+      "height": 1460,
+      "outputs": {
+        "avif": [
+          {
+            "w": 320,
+            "h": 317,
+            "file": "/images/ipad-body-part-320.avif"
+          },
+          {
+            "w": 480,
+            "h": 476,
+            "file": "/images/ipad-body-part-480.avif"
+          },
+          {
+            "w": 640,
+            "h": 635,
+            "file": "/images/ipad-body-part-640.avif"
+          },
+          {
+            "w": 800,
+            "h": 793,
+            "file": "/images/ipad-body-part-800.avif"
+          },
+          {
+            "w": 1000,
+            "h": 992,
+            "file": "/images/ipad-body-part-1000.avif"
+          }
+        ],
+        "webp": [
+          {
+            "w": 320,
+            "h": 317,
+            "file": "/images/ipad-body-part-320.webp"
+          },
+          {
+            "w": 480,
+            "h": 476,
+            "file": "/images/ipad-body-part-480.webp"
+          },
+          {
+            "w": 640,
+            "h": 635,
+            "file": "/images/ipad-body-part-640.webp"
+          },
+          {
+            "w": 800,
+            "h": 793,
+            "file": "/images/ipad-body-part-800.webp"
+          },
+          {
+            "w": 1000,
+            "h": 992,
+            "file": "/images/ipad-body-part-1000.webp"
+          }
+        ],
+        "png": [
+          {
+            "w": 320,
+            "h": 317,
+            "file": "/images/ipad-body-part-320.png"
+          },
+          {
+            "w": 480,
+            "h": 476,
+            "file": "/images/ipad-body-part-480.png"
+          },
+          {
+            "w": 640,
+            "h": 635,
+            "file": "/images/ipad-body-part-640.png"
+          },
+          {
+            "w": 800,
+            "h": 793,
+            "file": "/images/ipad-body-part-800.png"
+          },
+          {
+            "w": 1000,
+            "h": 992,
+            "file": "/images/ipad-body-part-1000.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "android-08",
+      "source": "assets/google-play/android-08.png",
+      "sourceWidth": 1620,
+      "sourceHeight": 2880,
+      "crop": {
+        "left": 61,
+        "top": 570,
+        "right": 1558,
+        "bottom": 2845,
+        "width": 1497,
+        "height": 2275
+      },
+      "transformation": "Faithful crop removing the legacy promotional headline above the device frame; app screen and existing frame unchanged. Resized (downscale only) to responsive widths in AVIF, WebP and PNG.",
+      "platform": "android",
+      "complete": true,
+      "alt": "Body-part selection in DICOM Camera on Android.",
+      "caption": "Body-part selection on Android.",
+      "aspect": "1497 / 2275",
+      "width": 1497,
+      "height": 2275,
+      "outputs": {
+        "avif": [
+          {
+            "w": 320,
+            "h": 486,
+            "file": "/images/android-body-part-320.avif"
+          },
+          {
+            "w": 480,
+            "h": 729,
+            "file": "/images/android-body-part-480.avif"
+          },
+          {
+            "w": 640,
+            "h": 973,
+            "file": "/images/android-body-part-640.avif"
+          },
+          {
+            "w": 800,
+            "h": 1216,
+            "file": "/images/android-body-part-800.avif"
+          },
+          {
+            "w": 1000,
+            "h": 1520,
+            "file": "/images/android-body-part-1000.avif"
+          }
+        ],
+        "webp": [
+          {
+            "w": 320,
+            "h": 486,
+            "file": "/images/android-body-part-320.webp"
+          },
+          {
+            "w": 480,
+            "h": 729,
+            "file": "/images/android-body-part-480.webp"
+          },
+          {
+            "w": 640,
+            "h": 973,
+            "file": "/images/android-body-part-640.webp"
+          },
+          {
+            "w": 800,
+            "h": 1216,
+            "file": "/images/android-body-part-800.webp"
+          },
+          {
+            "w": 1000,
+            "h": 1520,
+            "file": "/images/android-body-part-1000.webp"
+          }
+        ],
+        "png": [
+          {
+            "w": 320,
+            "h": 486,
+            "file": "/images/android-body-part-320.png"
+          },
+          {
+            "w": 480,
+            "h": 729,
+            "file": "/images/android-body-part-480.png"
+          },
+          {
+            "w": 640,
+            "h": 973,
+            "file": "/images/android-body-part-640.png"
+          },
+          {
+            "w": 800,
+            "h": 1216,
+            "file": "/images/android-body-part-800.png"
+          },
+          {
+            "w": 1000,
+            "h": 1520,
+            "file": "/images/android-body-part-1000.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "android-10",
+      "source": "assets/google-play/android-10.png",
+      "sourceWidth": 1620,
+      "sourceHeight": 2880,
+      "crop": {
+        "left": 61,
+        "top": 727,
+        "right": 1558,
+        "bottom": 2880,
+        "width": 1497,
+        "height": 2153
+      },
+      "transformation": "Faithful crop removing the legacy promotional headline above the device frame; app screen and existing frame unchanged. Resized (downscale only) to responsive widths in AVIF, WebP and PNG.",
+      "platform": "android",
+      "complete": false,
+      "alt": "DICOM Camera capture options on Android.",
+      "caption": "Capture options on Android. This earlier screen labels the capture-first option “Quick Photos”.",
+      "aspect": "1497 / 2153",
+      "width": 1497,
+      "height": 2153,
+      "outputs": {
+        "avif": [
+          {
+            "w": 320,
+            "h": 460,
+            "file": "/images/android-capture-options-320.avif"
+          },
+          {
+            "w": 480,
+            "h": 690,
+            "file": "/images/android-capture-options-480.avif"
+          },
+          {
+            "w": 640,
+            "h": 920,
+            "file": "/images/android-capture-options-640.avif"
+          },
+          {
+            "w": 800,
+            "h": 1151,
+            "file": "/images/android-capture-options-800.avif"
+          },
+          {
+            "w": 1000,
+            "h": 1438,
+            "file": "/images/android-capture-options-1000.avif"
+          }
+        ],
+        "webp": [
+          {
+            "w": 320,
+            "h": 460,
+            "file": "/images/android-capture-options-320.webp"
+          },
+          {
+            "w": 480,
+            "h": 690,
+            "file": "/images/android-capture-options-480.webp"
+          },
+          {
+            "w": 640,
+            "h": 920,
+            "file": "/images/android-capture-options-640.webp"
+          },
+          {
+            "w": 800,
+            "h": 1151,
+            "file": "/images/android-capture-options-800.webp"
+          },
+          {
+            "w": 1000,
+            "h": 1438,
+            "file": "/images/android-capture-options-1000.webp"
+          }
+        ],
+        "png": [
+          {
+            "w": 320,
+            "h": 460,
+            "file": "/images/android-capture-options-320.png"
+          },
+          {
+            "w": 480,
+            "h": 690,
+            "file": "/images/android-capture-options-480.png"
+          },
+          {
+            "w": 640,
+            "h": 920,
+            "file": "/images/android-capture-options-640.png"
+          },
+          {
+            "w": 800,
+            "h": 1151,
+            "file": "/images/android-capture-options-800.png"
+          },
+          {
+            "w": 1000,
+            "h": 1438,
+            "file": "/images/android-capture-options-1000.png"
+          }
+        ]
+      }
+    }
+  ],
+  "icons": [
+    {
+      "id": "apple-icon",
+      "source": "assets/apple/dicom-camera-app-icon.jpg",
+      "transformation": "Resized square PNG/WebP derivatives (48–512px). Artwork unchanged.",
+      "usage": "Header, footer, favicons, social card, download page."
+    },
+    {
+      "id": "android-icon",
+      "source": "assets/google-play/dicom-camera-app-icon.png",
+      "transformation": "Resized square PNG derivatives (64–256px). Artwork unchanged.",
+      "usage": "Android section of the download page only."
+    }
+  ],
+  "social": {
+    "id": "social-card",
+    "sources": [
+      "apple-icon",
+      "iphone-06"
+    ],
+    "transformation": "Composite 1200×630 JPEG: app icon, typeset wordmark, cropped iPhone body-part screenshot on near-white background.",
+    "usage": "Open Graph / Twitter card image."
+  },
+  "badges": [
+    {
+      "id": "app-store-badge",
+      "source": "assets/badges/download-on-the-app-store.svg",
+      "transformation": "Copied unchanged.",
+      "usage": "All store-badge groups."
+    },
+    {
+      "id": "google-play-badge",
+      "source": "assets/badges/get-it-on-google-play.png",
+      "transformation": "Copied unchanged (646×250). Built-in padding preserved; visible badge occupies ~67% of the box height.",
+      "usage": "All store-badge groups."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+import { chromium } from 'playwright';
+const [,, url, out, w, h, selector] = process.argv;
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: +w, height: +h }, deviceScaleFactor: 1 });
+await page.goto(url, { waitUntil: 'networkidle' });
+await page.waitForTimeout(800);
+const el = page.locator(selector).first();
+await el.scrollIntoViewIfNeeded();
+await page.waitForTimeout(600);
+await el.screenshot({ path: out });
+await browser.close();
