@@ -18,7 +18,8 @@ const app = (
 
 const hashPath = window.location.hash.replace(/^#/, '');
 const isHome = hashPath === '' || hashPath === '/';
-if (container.hasChildNodes() && isHome) {
+// A bare Vite template only contains the <!--app-html--> comment; hydrate only real prerendered markup.
+if (container.querySelector('*') && isHome) {
   hydrateRoot(container, app);
 } else {
   container.replaceChildren();

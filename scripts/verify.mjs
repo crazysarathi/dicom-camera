@@ -52,13 +52,16 @@ for (const route of ROUTES) {
     page.on('requestfailed', (r) => errors.push(`requestfailed ${r.url()}`));
     const res = await page.goto(BASE + route, { waitUntil: 'networkidle' });
     await page.waitForTimeout(600);
-    // Scroll through to trigger lazy images and reveals, then back to top for the screenshot.
+    // Scroll through to trigger lazy images and reveals (slowly enough for ScrollSmoother's 0.9 s lag),
+    // pause at the bottom, then return to the top.
     await page.evaluate(async () => {
       const h = document.documentElement.scrollHeight;
-      for (let y = 0; y < h; y += 500) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 40)); }
+      for (let y = 0; y < h; y += 400) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 60)); }
+      window.scrollTo(0, h);
+      await new Promise((r) => setTimeout(r, 1500));
       window.scrollTo(0, 0);
     });
-    await page.waitForTimeout(800);
+    await page.waitForTimeout(1200);
     const metrics = await page.evaluate(() => {
       const de = document.documentElement;
       const brokenImgs = [...document.images].filter((i) => i.complete && i.naturalWidth === 0 && !i.hidden && i.loading !== 'lazy').map((i) => i.currentSrc || i.src);
@@ -67,7 +70,20 @@ for (const route of ROUTES) {
       return { scrollWidth: de.scrollWidth, clientWidth: de.clientWidth, overflow: de.scrollWidth > de.clientWidth + 1, wide, brokenImgs, h1: document.querySelectorAll('h1').length, title: document.title, hiddenAfterScroll: hidden };
     });
     const shotName = `${slug(route)}-${vp.name}.png`;
-    await page.screenshot({ path: path.join(SHOTS, shotName), fullPage: vp.name === '390' || vp.name === '1440' });
+    if (vp.name === '390' || vp.name === '1440') {
+      // Full-page captures: GSAP ScrollSmoother (desktop) transforms the content, which breaks stitched
+      // full-page screenshots, so capture with reduced motion emulated (smoother off, reveals off).
+      const shot = await context.newPage();
+      await shot.emulateMedia({ reducedMotion: 'reduce' });
+      await shot.setViewportSize({ width: vp.width, height: vp.height });
+      await shot.goto(BASE + route, { waitUntil: 'networkidle' });
+      await shot.evaluate(async () => { const h = document.documentElement.scrollHeight; for (let y = 0; y < h; y += 600) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 50)); } window.scrollTo(0, 0); });
+      await shot.waitForTimeout(800);
+      await shot.screenshot({ path: path.join(SHOTS, shotName), fullPage: true });
+      await shot.close();
+    } else {
+      await page.screenshot({ path: path.join(SHOTS, shotName), fullPage: false });
+    }
     pageReport.viewports.push({ ...vp, status: res?.status(), ...metrics, errors, screenshot: `screenshots/${shotName}` });
     if (vp.name === '1440' || vp.name === '390') {
       const axe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice']).analyze();
@@ -120,7 +136,8 @@ await flow('mobile navigation opens with keyboard, traps focus, Escape closes an
   await page.waitForTimeout(400);
   const dialog = page.locator('#mobile-navigation'); if (!(await dialog.isVisible())) throw new Error('dialog not visible');
   const inside = await page.evaluate(() => !!document.activeElement?.closest('#mobile-navigation')); if (!inside) throw new Error('focus not inside dialog');
-  const expanded = await btn.getAttribute('aria-expanded');
+  // While the dialog is open, Radix hides the rest of the page from the accessibility tree, so read the trigger by CSS.
+  const expanded = await page.evaluate(() => document.querySelector('button[aria-label="Open navigation"]')?.getAttribute('aria-expanded'));
   const linkCount = await dialog.getByRole('link').count(); if (linkCount < 5) throw new Error('expected nav links in dialog, got ' + linkCount);
   await page.keyboard.press('Escape'); await page.waitForTimeout(400);
   if (await dialog.isVisible().catch(() => false)) throw new Error('dialog still visible after Escape');

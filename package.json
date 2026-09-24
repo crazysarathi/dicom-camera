@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "description": "Commercial product website for DICOM Camera (dicom.camera). Static, prerendered React site.",
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "vite",
     "images": "node scripts/build-images.mjs",
@@ -45,6 +47,7 @@
     "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.20",
     "cross-env": "^7.0.3",
+    "lighthouse": "^13.5.0",
     "playwright": "^1.63.0",
     "postcss": "^8.5.0",
     "sharp": "^0.35.4",

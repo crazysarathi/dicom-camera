@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation, Link } from 'react-router-dom';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Menu, X } from 'lucide-react';
@@ -12,7 +12,15 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  useEffect(() => { setOpen(false); }, [location.pathname]);
+  // When a menu link navigates, close the sheet and let focus land on #main (ScrollManager) instead of
+  // Radix returning it to the "Open navigation" button.
+  const closedByNavigation = useRef(false);
+  useEffect(() => {
+    setOpen((wasOpen) => {
+      if (wasOpen) closedByNavigation.current = true;
+      return false;
+    });
+  }, [location.pathname]);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
@@ -59,6 +67,12 @@ export function SiteHeader() {
               <DialogPrimitive.Content
                 id="mobile-navigation"
                 aria-label="Site navigation"
+                onCloseAutoFocus={(event) => {
+                  if (!closedByNavigation.current) return;
+                  event.preventDefault();
+                  closedByNavigation.current = false;
+                  document.getElementById('main')?.focus({ preventScroll: true });
+                }}
                 className="fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col bg-white shadow-card outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right data-[state=closed]:duration-200 data-[state=open]:duration-300"
               >
                 <div className="flex h-[var(--header-h)] items-center justify-between border-b border-line px-5">

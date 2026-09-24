@@ -1,5 +1,5 @@
-import { useState, type KeyboardEvent } from 'react';
-import { ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import { useRef, useState, type KeyboardEvent } from 'react';
+import { ChevronLeft, ChevronRight, Images, Maximize2, Smartphone, Tablet, type LucideIcon } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -31,6 +31,10 @@ interface ViewerState {
   index: number;
 }
 
+/** Platform glyph shown before each tab label; unknown group ids fall back to a generic gallery icon. */
+const groupIcons: Record<string, LucideIcon> = { iphone: Smartphone, ipad: Tablet, android: Smartphone };
+const iconFor = (id: string): LucideIcon => groupIcons[id] ?? Images;
+
 /** Wide iPad compositions get more room than tall phone compositions so both read at a similar height. */
 function figureWidth(id: ScreenshotId) {
   const wide = screenshots[id].platform === 'ipad';
@@ -47,6 +51,16 @@ function figureWidth(id: ScreenshotId) {
  */
 export function ScreenshotGallery({ groups, tabsLabel = 'Platform', viewer = true, defaultGroup, className }: ScreenshotGalleryProps) {
   const [state, setState] = useState<ViewerState | null>(null);
+  /** The enlarge button that opened the viewer; focus goes back to it when the viewer closes. */
+  const returnTo = useRef<HTMLElement | null>(null);
+
+  const close = () => {
+    const el = returnTo.current;
+    returnTo.current = null;
+    setState(null);
+    // Refocus after the dialog has unmounted and the outside aria-hidden/inert state is lifted.
+    if (el) requestAnimationFrame(() => el.focus());
+  };
 
   const step = (delta: number) =>
     setState((s) => (s ? { ...s, index: (s.index + delta + s.group.images.length) % s.group.images.length } : s));
@@ -62,10 +76,27 @@ export function ScreenshotGallery({ groups, tabsLabel = 'Platform', viewer = tru
   return (
     <div className={cn(className)}>
       <Tabs defaultValue={defaultGroup ?? groups[0]?.id}>
-        <TabsList aria-label={tabsLabel}>
-          {groups.map((g) => (
-            <TabsTrigger key={g.id} value={g.id}>{g.label}</TabsTrigger>
-          ))}
+        {/* Single row on every width: the list scrolls sideways (scrollbar hidden) instead of wrapping. */}
+        <TabsList
+          aria-label={tabsLabel}
+          className="max-w-full flex-nowrap overflow-x-auto overscroll-x-contain [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden"
+        >
+          {groups.map((g) => {
+            const Icon = iconFor(g.id);
+            return (
+              <TabsTrigger key={g.id} value={g.id} className="shrink-0 gap-1.5 pl-3 pr-2.5 sm:gap-2 sm:pl-4 sm:pr-3.5">
+                <Icon aria-hidden="true" />
+                {g.label}
+                {/* Decorative count: hidden on the narrowest phones so three tabs fit at 360px without scrolling. */}
+                <span
+                  aria-hidden="true"
+                  className="ml-0.5 hidden min-w-[1.375rem] items-center justify-center rounded-full bg-ink/[0.06] px-1.5 py-px text-[0.6875rem] font-semibold leading-4 tabular-nums text-muted-foreground min-[400px]:inline-flex"
+                >
+                  {g.images.length}
+                </span>
+              </TabsTrigger>
+            );
+          })}
         </TabsList>
         {groups.map((g) => (
           <TabsContent key={g.id} value={g.id}>
@@ -90,7 +121,7 @@ export function ScreenshotGallery({ groups, tabsLabel = 'Platform', viewer = tru
                           variant="secondary"
                           size="icon"
                           className="absolute right-3 top-3"
-                          onClick={() => setState({ group: g, index: i })}
+                          onClick={(e) => { returnTo.current = e.currentTarget; setState({ group: g, index: i }); }}
                         >
                           <Maximize2 className="size-5" aria-hidden="true" />
                           <span className="sr-only">{a11yLabels.viewLarger}: {img.caption}</span>
@@ -106,7 +137,7 @@ export function ScreenshotGallery({ groups, tabsLabel = 'Platform', viewer = tru
       </Tabs>
 
       {viewer && (
-        <Dialog open={state !== null} onOpenChange={(open) => { if (!open) setState(null); }}>
+        <Dialog open={state !== null} onOpenChange={(open) => { if (!open) close(); }}>
           {state && current && (
             <DialogContent
               closeLabel={a11yLabels.closePreview}

@@ -23,7 +23,7 @@ export function Faq({ items, className, idPrefix = 'faq' }: FaqProps) {
   // Deep links (#faq-3) open the matching disclosure; browsers only scroll to it. Client-side only.
   useEffect(() => {
     const openFromHash = () => {
-      const hash = window.location.hash.slice(1);
+      const hash = (window.location.hash.split('#').pop() ?? '');
       if (!hash || !hash.startsWith(`${idPrefix}-`)) return;
       const target = document.getElementById(hash);
       if (target instanceof HTMLDetailsElement) target.open = true;

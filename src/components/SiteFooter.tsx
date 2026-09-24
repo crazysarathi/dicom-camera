@@ -53,7 +53,7 @@ export function SiteFooter() {
               </a>
             </li>
           </ul>
-          <p className="sm:text-right">© {currentYear} {siteConfig.publisher}. All rights reserved.</p>
+          <p className="sm:text-right">© <span suppressHydrationWarning>{currentYear}</span> {siteConfig.publisher}. All rights reserved.</p>
         </div>
         <p className="mt-4 text-xs text-muted-foreground">
           Apple and the App Store are trademarks of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.

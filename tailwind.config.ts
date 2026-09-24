@@ -8,7 +8,7 @@ const palette = {
   ink: '#142235',
   muted: '#526173',
   primary: '#175CD3',
-  teal: '#087F8C',
+  teal: '#0B6F7A', // brief suggested #087F8C; darkened for measured 4.5:1+ small-text contrast on the near-white surface
   line: '#DCE3EC',
 };
 

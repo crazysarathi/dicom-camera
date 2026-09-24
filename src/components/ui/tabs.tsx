@@ -25,7 +25,7 @@ const TabsTrigger = React.forwardRef<React.ElementRef<typeof TabsPrimitive.Trigg
         'transition-[background-color,color,box-shadow,transform] duration-200 ease-out hover:text-ink',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary',
         'data-[state=active]:bg-white data-[state=active]:text-ink data-[state=active]:shadow-[0_1px_2px_rgba(20,34,53,0.12),0_0_0_1px_rgba(220,227,236,1)]',
-        '[&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground data-[state=active]:[&_svg]:text-primary',
+        '[&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground [&[data-state=active]_svg]:text-primary',
         className,
       )}
       {...props}

@@ -1,0 +1,1436 @@
+{
+  "base": "http://localhost:4173",
+  "generated": "2026-09-24T07:09:10.956Z",
+  "pages": [
+    {
+      "route": "/",
+      "viewports": [
+        {
+          "name": "360",
+          "width": 360,
+          "height": 740,
+          "status": 200,
+          "scrollWidth": 360,
+          "clientWidth": 360,
+          "overflow": false,
+          "wide": [
+            "button#radix-:Rdpc:-trigger-android.inline-flex.min-h-11.items-center",
+            "span.ml-0.5.inline-flex.min-w-[1.375rem]"
+          ],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "DICOM Camera | Clinical Photos and Video for PACS",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/home-360.png"
+        },
+        {
+          "name": "390",
+          "width": 390,
+          "height": 844,
+          "status": 200,
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow": false,
+          "wide": [
+            "button#radix-:Rdpc:-trigger-android.inline-flex.min-h-11.items-center",
+            "span.ml-0.5.inline-flex.min-w-[1.375rem]"
+          ],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "DICOM Camera | Clinical Photos and Video for PACS",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/home-390.png"
+        },
+        {
+          "name": "768",
+          "width": 768,
+          "height": 1024,
+          "status": 200,
+          "scrollWidth": 768,
+          "clientWidth": 768,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "DICOM Camera | Clinical Photos and Video for PACS",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/home-768.png"
+        },
+        {
+          "name": "1024",
+          "width": 1024,
+          "height": 768,
+          "status": 200,
+          "scrollWidth": 1024,
+          "clientWidth": 1024,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "DICOM Camera | Clinical Photos and Video for PACS",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/home-1024.png"
+        },
+        {
+          "name": "1440",
+          "width": 1440,
+          "height": 900,
+          "status": 200,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "DICOM Camera | Clinical Photos and Video for PACS",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/home-1440.png"
+        },
+        {
+          "name": "844x390-landscape",
+          "width": 844,
+          "height": 390,
+          "status": 200,
+          "scrollWidth": 844,
+          "clientWidth": 844,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "DICOM Camera | Clinical Photos and Video for PACS",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/home-844x390-landscape.png"
+        }
+      ],
+      "axe": {
+        "390": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "nodes": [
+              ".eyebrow"
+            ]
+          }
+        ],
+        "1440": []
+      },
+      "links": {
+        "total": 30,
+        "appStoreOk": true,
+        "googlePlayOk": true,
+        "commercialMail": [
+          "mailto:info@raster.in?subject=DICOM%20Camera%20hospital%20enquiry"
+        ],
+        "supportMail": [
+          "mailto:support@raster.in?subject=DICOM%20Camera%20support"
+        ],
+        "badMailto": [],
+        "internalStatuses": {
+          "#/": 200,
+          "#/workflows/": 200,
+          "#/enterprise/": 200,
+          "#/integration/": 200,
+          "#/support/": 200,
+          "#/download/": 200,
+          "#/privacy-and-retention/": 200,
+          "#/contact/": 200
+        },
+        "emptyText": [],
+        "hashLinks": 0
+      },
+      "errors": []
+    },
+    {
+      "route": "/#/workflows/",
+      "viewports": [
+        {
+          "name": "360",
+          "width": 360,
+          "height": 740,
+          "status": 200,
+          "scrollWidth": 360,
+          "clientWidth": 360,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Clinical Capture Workflows | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/workflows-360.png"
+        },
+        {
+          "name": "390",
+          "width": 390,
+          "height": 844,
+          "status": 200,
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Clinical Capture Workflows | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/workflows-390.png"
+        },
+        {
+          "name": "768",
+          "width": 768,
+          "height": 1024,
+          "status": 200,
+          "scrollWidth": 768,
+          "clientWidth": 768,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Clinical Capture Workflows | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/workflows-768.png"
+        },
+        {
+          "name": "1024",
+          "width": 1024,
+          "height": 768,
+          "status": 200,
+          "scrollWidth": 1024,
+          "clientWidth": 1024,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Clinical Capture Workflows | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/workflows-1024.png"
+        },
+        {
+          "name": "1440",
+          "width": 1440,
+          "height": 900,
+          "status": 200,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Clinical Capture Workflows | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/workflows-1440.png"
+        },
+        {
+          "name": "844x390-landscape",
+          "width": 844,
+          "height": 390,
+          "status": 200,
+          "scrollWidth": 844,
+          "clientWidth": 844,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Clinical Capture Workflows | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/workflows-844x390-landscape.png"
+        }
+      ],
+      "axe": {
+        "390": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "nodes": [
+              ".max-w-3xl > .eyebrow.mb-3"
+            ]
+          }
+        ],
+        "1440": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "nodes": [
+              ".max-w-3xl > .eyebrow.mb-3"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "total": 27,
+        "appStoreOk": true,
+        "googlePlayOk": true,
+        "commercialMail": [
+          "mailto:info@raster.in?subject=DICOM%20Camera%20hospital%20enquiry"
+        ],
+        "supportMail": [
+          "mailto:support@raster.in?subject=DICOM%20Camera%20support"
+        ],
+        "badMailto": [],
+        "internalStatuses": {
+          "#/": 200,
+          "#/workflows/": 200,
+          "#/enterprise/": 200,
+          "#/integration/": 200,
+          "#/support/": 200,
+          "#/download/": 200,
+          "#/privacy-and-retention/": 200,
+          "#/contact/": 200
+        },
+        "emptyText": [],
+        "hashLinks": 0
+      },
+      "errors": []
+    },
+    {
+      "route": "/#/enterprise/",
+      "viewports": [
+        {
+          "name": "360",
+          "width": 360,
+          "height": 740,
+          "status": 200,
+          "scrollWidth": 360,
+          "clientWidth": 360,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Hospital and Enterprise Workflows | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/enterprise-360.png"
+        },
+        {
+          "name": "390",
+          "width": 390,
+          "height": 844,
+          "status": 200,
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Hospital and Enterprise Workflows | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/enterprise-390.png"
+        },
+        {
+          "name": "768",
+          "width": 768,
+          "height": 1024,
+          "status": 200,
+          "scrollWidth": 768,
+          "clientWidth": 768,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Hospital and Enterprise Workflows | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/enterprise-768.png"
+        },
+        {
+          "name": "1024",
+          "width": 1024,
+          "height": 768,
+          "status": 200,
+          "scrollWidth": 1024,
+          "clientWidth": 1024,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Hospital and Enterprise Workflows | DICOM Camera",
+          "hiddenAfterScroll": [
+            "li.flex.items-start"
+          ],
+          "errors": [],
+          "screenshot": "screenshots/enterprise-1024.png"
+        },
+        {
+          "name": "1440",
+          "width": 1440,
+          "height": 900,
+          "status": 200,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Hospital and Enterprise Workflows | DICOM Camera",
+          "hiddenAfterScroll": [
+            "li.flex.items-start"
+          ],
+          "errors": [],
+          "screenshot": "screenshots/enterprise-1440.png"
+        },
+        {
+          "name": "844x390-landscape",
+          "width": 844,
+          "height": 390,
+          "status": 200,
+          "scrollWidth": 844,
+          "clientWidth": 844,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Hospital and Enterprise Workflows | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/enterprise-844x390-landscape.png"
+        }
+      ],
+      "axe": {
+        "390": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "nodes": [
+              ".eyebrow"
+            ]
+          }
+        ],
+        "1440": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "nodes": [
+              ".eyebrow"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "total": 28,
+        "appStoreOk": true,
+        "googlePlayOk": true,
+        "commercialMail": [
+          "mailto:info@raster.in?subject=DICOM%20Camera%20hospital%20enquiry"
+        ],
+        "supportMail": [
+          "mailto:support@raster.in?subject=DICOM%20Camera%20support"
+        ],
+        "badMailto": [],
+        "internalStatuses": {
+          "#/": 200,
+          "#/workflows/": 200,
+          "#/enterprise/": 200,
+          "#/integration/": 200,
+          "#/support/": 200,
+          "#/download/": 200,
+          "#/contact/": 200,
+          "#/privacy-and-retention/": 200
+        },
+        "emptyText": [],
+        "hashLinks": 0
+      },
+      "errors": []
+    },
+    {
+      "route": "/#/integration/",
+      "viewports": [
+        {
+          "name": "360",
+          "width": 360,
+          "height": 740,
+          "status": 200,
+          "scrollWidth": 360,
+          "clientWidth": 360,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "DICOM Connectivity and Image Formats | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/integration-360.png"
+        },
+        {
+          "name": "390",
+          "width": 390,
+          "height": 844,
+          "status": 200,
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "DICOM Connectivity and Image Formats | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/integration-390.png"
+        },
+        {
+          "name": "768",
+          "width": 768,
+          "height": 1024,
+          "status": 200,
+          "scrollWidth": 768,
+          "clientWidth": 768,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "DICOM Connectivity and Image Formats | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/integration-768.png"
+        },
+        {
+          "name": "1024",
+          "width": 1024,
+          "height": 768,
+          "status": 200,
+          "scrollWidth": 1024,
+          "clientWidth": 1024,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "DICOM Connectivity and Image Formats | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/integration-1024.png"
+        },
+        {
+          "name": "1440",
+          "width": 1440,
+          "height": 900,
+          "status": 200,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "DICOM Connectivity and Image Formats | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/integration-1440.png"
+        },
+        {
+          "name": "844x390-landscape",
+          "width": 844,
+          "height": 390,
+          "status": 200,
+          "scrollWidth": 844,
+          "clientWidth": 844,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "DICOM Connectivity and Image Formats | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/integration-844x390-landscape.png"
+        }
+      ],
+      "axe": {
+        "390": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "nodes": [
+              ".eyebrow"
+            ]
+          }
+        ],
+        "1440": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "nodes": [
+              ".eyebrow"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "total": 31,
+        "appStoreOk": true,
+        "googlePlayOk": true,
+        "commercialMail": [
+          "mailto:info@raster.in?subject=DICOM%20Camera%20hospital%20enquiry"
+        ],
+        "supportMail": [
+          "mailto:support@raster.in?subject=DICOM%20Camera%20support"
+        ],
+        "badMailto": [],
+        "internalStatuses": {
+          "#/": 200,
+          "#/workflows/": 200,
+          "#/enterprise/": 200,
+          "#/integration/": 200,
+          "#/support/": 200,
+          "#/download/": 200,
+          "#/contact/": 200,
+          "#/integration/#connectivity": 200,
+          "#/integration/#compression": 200,
+          "#/integration/#video-ios": 200,
+          "#/integration/#annotations": 200,
+          "#/integration/#storage-commitment": 200,
+          "#/privacy-and-retention/": 200
+        },
+        "emptyText": [],
+        "hashLinks": 0
+      },
+      "errors": []
+    },
+    {
+      "route": "/#/privacy-and-retention/",
+      "viewports": [
+        {
+          "name": "360",
+          "width": 360,
+          "height": 740,
+          "status": 200,
+          "scrollWidth": 360,
+          "clientWidth": 360,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Image Storage and Retention | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/privacy-and-retention-360.png"
+        },
+        {
+          "name": "390",
+          "width": 390,
+          "height": 844,
+          "status": 200,
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Image Storage and Retention | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/privacy-and-retention-390.png"
+        },
+        {
+          "name": "768",
+          "width": 768,
+          "height": 1024,
+          "status": 200,
+          "scrollWidth": 768,
+          "clientWidth": 768,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Image Storage and Retention | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/privacy-and-retention-768.png"
+        },
+        {
+          "name": "1024",
+          "width": 1024,
+          "height": 768,
+          "status": 200,
+          "scrollWidth": 1024,
+          "clientWidth": 1024,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Image Storage and Retention | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/privacy-and-retention-1024.png"
+        },
+        {
+          "name": "1440",
+          "width": 1440,
+          "height": 900,
+          "status": 200,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Image Storage and Retention | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/privacy-and-retention-1440.png"
+        },
+        {
+          "name": "844x390-landscape",
+          "width": 844,
+          "height": 390,
+          "status": 200,
+          "scrollWidth": 844,
+          "clientWidth": 844,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Image Storage and Retention | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/privacy-and-retention-844x390-landscape.png"
+        }
+      ],
+      "axe": {
+        "390": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "nodes": [
+              ".eyebrow"
+            ]
+          }
+        ],
+        "1440": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "nodes": [
+              ".eyebrow"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "total": 26,
+        "appStoreOk": true,
+        "googlePlayOk": true,
+        "commercialMail": [
+          "mailto:info@raster.in?subject=DICOM%20Camera%20hospital%20enquiry"
+        ],
+        "supportMail": [
+          "mailto:support@raster.in?subject=DICOM%20Camera%20support"
+        ],
+        "badMailto": [],
+        "internalStatuses": {
+          "#/": 200,
+          "#/workflows/": 200,
+          "#/enterprise/": 200,
+          "#/integration/": 200,
+          "#/support/": 200,
+          "#/download/": 200,
+          "#/privacy-and-retention/": 200,
+          "#/contact/": 200
+        },
+        "emptyText": [],
+        "hashLinks": 0
+      },
+      "errors": []
+    },
+    {
+      "route": "/#/download/",
+      "viewports": [
+        {
+          "name": "360",
+          "width": 360,
+          "height": 740,
+          "status": 200,
+          "scrollWidth": 360,
+          "clientWidth": 360,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Download for iOS and Android | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/download-360.png"
+        },
+        {
+          "name": "390",
+          "width": 390,
+          "height": 844,
+          "status": 200,
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Download for iOS and Android | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/download-390.png"
+        },
+        {
+          "name": "768",
+          "width": 768,
+          "height": 1024,
+          "status": 200,
+          "scrollWidth": 768,
+          "clientWidth": 768,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Download for iOS and Android | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/download-768.png"
+        },
+        {
+          "name": "1024",
+          "width": 1024,
+          "height": 768,
+          "status": 200,
+          "scrollWidth": 1024,
+          "clientWidth": 1024,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Download for iOS and Android | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/download-1024.png"
+        },
+        {
+          "name": "1440",
+          "width": 1440,
+          "height": 900,
+          "status": 200,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Download for iOS and Android | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/download-1440.png"
+        },
+        {
+          "name": "844x390-landscape",
+          "width": 844,
+          "height": 390,
+          "status": 200,
+          "scrollWidth": 844,
+          "clientWidth": 844,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Download for iOS and Android | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/download-844x390-landscape.png"
+        }
+      ],
+      "axe": {
+        "390": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "nodes": [
+              ".eyebrow"
+            ]
+          }
+        ],
+        "1440": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "nodes": [
+              ".eyebrow"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "total": 27,
+        "appStoreOk": true,
+        "googlePlayOk": true,
+        "commercialMail": [
+          "mailto:info@raster.in?subject=DICOM%20Camera%20hospital%20enquiry"
+        ],
+        "supportMail": [
+          "mailto:support@raster.in?subject=DICOM%20Camera%20support"
+        ],
+        "badMailto": [],
+        "internalStatuses": {
+          "#/": 200,
+          "#/workflows/": 200,
+          "#/enterprise/": 200,
+          "#/integration/": 200,
+          "#/support/": 200,
+          "#/download/": 200,
+          "#/privacy-and-retention/": 200,
+          "#/contact/": 200
+        },
+        "emptyText": [],
+        "hashLinks": 0
+      },
+      "errors": []
+    },
+    {
+      "route": "/#/support/",
+      "viewports": [
+        {
+          "name": "360",
+          "width": 360,
+          "height": 740,
+          "status": 200,
+          "scrollWidth": 360,
+          "clientWidth": 360,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Support and Frequently Asked Questions | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/support-360.png"
+        },
+        {
+          "name": "390",
+          "width": 390,
+          "height": 844,
+          "status": 200,
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Support and Frequently Asked Questions | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/support-390.png"
+        },
+        {
+          "name": "768",
+          "width": 768,
+          "height": 1024,
+          "status": 200,
+          "scrollWidth": 768,
+          "clientWidth": 768,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Support and Frequently Asked Questions | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/support-768.png"
+        },
+        {
+          "name": "1024",
+          "width": 1024,
+          "height": 768,
+          "status": 200,
+          "scrollWidth": 1024,
+          "clientWidth": 1024,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Support and Frequently Asked Questions | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/support-1024.png"
+        },
+        {
+          "name": "1440",
+          "width": 1440,
+          "height": 900,
+          "status": 200,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Support and Frequently Asked Questions | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/support-1440.png"
+        },
+        {
+          "name": "844x390-landscape",
+          "width": 844,
+          "height": 390,
+          "status": 200,
+          "scrollWidth": 844,
+          "clientWidth": 844,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Support and Frequently Asked Questions | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/support-844x390-landscape.png"
+        }
+      ],
+      "axe": {
+        "390": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "nodes": [
+              ".eyebrow"
+            ]
+          }
+        ],
+        "1440": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "nodes": [
+              ".eyebrow"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "total": 26,
+        "appStoreOk": true,
+        "googlePlayOk": true,
+        "commercialMail": [
+          "mailto:info@raster.in?subject=DICOM%20Camera%20hospital%20enquiry"
+        ],
+        "supportMail": [
+          "mailto:support@raster.in?subject=DICOM%20Camera%20support",
+          "mailto:support@raster.in?subject=DICOM%20Camera%20support",
+          "mailto:support@raster.in?subject=DICOM%20Camera%20support"
+        ],
+        "badMailto": [],
+        "internalStatuses": {
+          "#/": 200,
+          "#/workflows/": 200,
+          "#/enterprise/": 200,
+          "#/integration/": 200,
+          "#/support/": 200,
+          "#/download/": 200,
+          "#/contact/": 200,
+          "#/privacy-and-retention/": 200
+        },
+        "emptyText": [],
+        "hashLinks": 0
+      },
+      "errors": []
+    },
+    {
+      "route": "/#/contact/",
+      "viewports": [
+        {
+          "name": "360",
+          "width": 360,
+          "height": 740,
+          "status": 200,
+          "scrollWidth": 360,
+          "clientWidth": 360,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Hospital and Commercial Enquiries | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/contact-360.png"
+        },
+        {
+          "name": "390",
+          "width": 390,
+          "height": 844,
+          "status": 200,
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Hospital and Commercial Enquiries | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/contact-390.png"
+        },
+        {
+          "name": "768",
+          "width": 768,
+          "height": 1024,
+          "status": 200,
+          "scrollWidth": 768,
+          "clientWidth": 768,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Hospital and Commercial Enquiries | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/contact-768.png"
+        },
+        {
+          "name": "1024",
+          "width": 1024,
+          "height": 768,
+          "status": 200,
+          "scrollWidth": 1024,
+          "clientWidth": 1024,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Hospital and Commercial Enquiries | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/contact-1024.png"
+        },
+        {
+          "name": "1440",
+          "width": 1440,
+          "height": 900,
+          "status": 200,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Hospital and Commercial Enquiries | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/contact-1440.png"
+        },
+        {
+          "name": "844x390-landscape",
+          "width": 844,
+          "height": 390,
+          "status": 200,
+          "scrollWidth": 844,
+          "clientWidth": 844,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Hospital and Commercial Enquiries | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/contact-844x390-landscape.png"
+        }
+      ],
+      "axe": {
+        "390": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "nodes": [
+              ".eyebrow"
+            ]
+          }
+        ],
+        "1440": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "nodes": [
+              ".eyebrow"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "total": 27,
+        "appStoreOk": true,
+        "googlePlayOk": true,
+        "commercialMail": [
+          "mailto:info@raster.in?subject=DICOM%20Camera%20hospital%20enquiry",
+          "mailto:info@raster.in?subject=DICOM%20Camera%20hospital%20enquiry"
+        ],
+        "supportMail": [
+          "mailto:support@raster.in?subject=DICOM%20Camera%20support",
+          "mailto:support@raster.in?subject=DICOM%20Camera%20support"
+        ],
+        "badMailto": [],
+        "internalStatuses": {
+          "#/": 200,
+          "#/workflows/": 200,
+          "#/enterprise/": 200,
+          "#/integration/": 200,
+          "#/support/": 200,
+          "#/download/": 200,
+          "#/privacy-and-retention/": 200,
+          "#/contact/": 200
+        },
+        "emptyText": [],
+        "hashLinks": 0
+      },
+      "errors": []
+    },
+    {
+      "route": "/#/this-page-does-not-exist/",
+      "viewports": [
+        {
+          "name": "360",
+          "width": 360,
+          "height": 740,
+          "status": 200,
+          "scrollWidth": 360,
+          "clientWidth": 360,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Page not found | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/this-page-does-not-exist-360.png"
+        },
+        {
+          "name": "390",
+          "width": 390,
+          "height": 844,
+          "status": 200,
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Page not found | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/this-page-does-not-exist-390.png"
+        },
+        {
+          "name": "768",
+          "width": 768,
+          "height": 1024,
+          "status": 200,
+          "scrollWidth": 768,
+          "clientWidth": 768,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Page not found | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/this-page-does-not-exist-768.png"
+        },
+        {
+          "name": "1024",
+          "width": 1024,
+          "height": 768,
+          "status": 200,
+          "scrollWidth": 1024,
+          "clientWidth": 1024,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Page not found | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/this-page-does-not-exist-1024.png"
+        },
+        {
+          "name": "1440",
+          "width": 1440,
+          "height": 900,
+          "status": 200,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Page not found | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/this-page-does-not-exist-1440.png"
+        },
+        {
+          "name": "844x390-landscape",
+          "width": 844,
+          "height": 390,
+          "status": 200,
+          "scrollWidth": 844,
+          "clientWidth": 844,
+          "overflow": false,
+          "wide": [],
+          "brokenImgs": [],
+          "h1": 1,
+          "title": "Page not found | DICOM Camera",
+          "hiddenAfterScroll": [],
+          "errors": [],
+          "screenshot": "screenshots/this-page-does-not-exist-844x390-landscape.png"
+        }
+      ],
+      "axe": {
+        "390": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "nodes": [
+              ".eyebrow"
+            ]
+          }
+        ],
+        "1440": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "nodes": [
+              ".eyebrow"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "total": 27,
+        "appStoreOk": true,
+        "googlePlayOk": true,
+        "commercialMail": [
+          "mailto:info@raster.in?subject=DICOM%20Camera%20hospital%20enquiry"
+        ],
+        "supportMail": [
+          "mailto:support@raster.in?subject=DICOM%20Camera%20support"
+        ],
+        "badMailto": [],
+        "internalStatuses": {
+          "#/": 200,
+          "#/workflows/": 200,
+          "#/enterprise/": 200,
+          "#/integration/": 200,
+          "#/support/": 200,
+          "#/download/": 200,
+          "#/privacy-and-retention/": 200,
+          "#/contact/": 200
+        },
+        "emptyText": [],
+        "hashLinks": 0
+      },
+      "errors": []
+    }
+  ],
+  "keyboard": [
+    {
+      "name": "skip link appears on Tab and moves focus to main",
+      "pass": true
+    },
+    {
+      "name": "mobile navigation opens with keyboard, traps focus, Escape closes and returns focus",
+      "pass": false,
+      "error": "TimeoutError: locator.getAttribute: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /open navigation/i })\u001b[22m\n"
+    },
+    {
+      "name": "FAQ disclosures open/close with keyboard on /support/",
+      "pass": true,
+      "faqCount": 10
+    },
+    {
+      "name": "copy email control on /#/support/ copies support@raster.in and confirms",
+      "pass": true
+    },
+    {
+      "name": "copy email control on /#/contact/ copies info@raster.in and confirms",
+      "pass": true
+    },
+    {
+      "name": "screenshot viewer (if present) opens, traps focus, Escape closes and returns focus",
+      "pass": true,
+      "viewerTriggers": 2
+    },
+    {
+      "name": "platform tabs (if present) are keyboard operable",
+      "pass": true,
+      "tabs": 3
+    },
+    {
+      "name": "200% zoom equivalent (720px wide, desktop UA) has no horizontal overflow on home",
+      "pass": true
+    },
+    {
+      "name": "legacy path URLs redirect to hash routes (/workflows/ → /#/workflows/)",
+      "pass": true,
+      "url": "http://localhost:4173/#/workflows/"
+    }
+  ],
+  "browsers": {
+    "firefox": {
+      "ran": true,
+      "pageErrors": [],
+      "desktopOverflow": 0,
+      "mobileOverflow": 0
+    },
+    "webkit": {
+      "ran": false,
+      "error": "Error: browserType.launch: \n╔═════════════════════════════════════════════════════════╗\n║ Host system is missing dependencies to run browsers.    ║\n║ Please install them with the following command:         ║\n║                                                         ║\n║     sudo npx playwright install-deps                    ║\n║                                                         ║\n║ Alternatively, use apt:                                 ║\n║     sudo apt-get install libgstreamer-plugins-bad1.0-0\\ ║\n║         libavif16                                       ║\n║                                                         ║\n║ <3 Playwright Team                                      ║\n╚═════════════════════════════════════════════════════════╝"
+    }
+  },
+  "summary": {
+    "overflowIssues": [],
+    "consoleErrors": [],
+    "axeViolations": [
+      "/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
+      "/#/workflows/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.max-w-3xl > .eyebrow.mb-3)",
+      "/#/workflows/ @1440: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.max-w-3xl > .eyebrow.mb-3)",
+      "/#/enterprise/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
+      "/#/enterprise/ @1440: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
+      "/#/integration/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
+      "/#/integration/ @1440: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
+      "/#/privacy-and-retention/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
+      "/#/privacy-and-retention/ @1440: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
+      "/#/download/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
+      "/#/download/ @1440: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
+      "/#/support/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
+      "/#/support/ @1440: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
+      "/#/contact/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
+      "/#/contact/ @1440: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
+      "/#/this-page-does-not-exist/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
+      "/#/this-page-does-not-exist/ @1440: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)"
+    ],
+    "h1Issues": [],
+    "brokenImgs": [],
+    "hiddenContent": [
+      "/#/enterprise/ @1024: li.flex.items-start",
+      "/#/enterprise/ @1440: li.flex.items-start"
+    ],
+    "linkIssues": [],
+    "keyboardFailures": [
+      "mobile navigation opens with keyboard, traps focus, Escape closes and returns focus: TimeoutError: locator.getAttribute: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /open navigation/i })\u001b[22m\n"
+    ]
+  }
+}
