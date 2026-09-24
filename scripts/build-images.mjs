@@ -15,27 +15,29 @@ const ASSETS = path.resolve(ROOT, 'assets-source');
 const OUT = path.join(ROOT, 'public', 'images');
 const MANIFEST_TS = path.join(ROOT, 'src', 'images', 'manifest.ts');
 
-// Frame bounds were measured from the originals (first row containing a wide dark run =
-// top edge of the device frame). `top` is nudged up a few px to keep the frame's rounded
-// corners intact. Bottom = original height (compositions bleed off the canvas bottom)
-// except where the device is complete inside the canvas.
+// Frame bounds were measured from the originals (first row containing a wide dark run = top edge
+// of the device frame; first/last dark columns = sides), inset by 1px so the crop starts on the
+// frame itself and no white canvas remains around it. Bottom = original height (compositions bleed
+// off the canvas bottom) except where the device is complete inside the canvas.
 const SCREENSHOTS = [
-  { id: 'iphone-06', src: 'apple/iphone-06-body-part.png', out: 'iphone-body-part', crop: { left: 40, top: 655, right: 1156, bottom: 2600 },
+  { id: 'iphone-06', src: 'apple/iphone-06-body-part.png', out: 'iphone-body-part', crop: { left: 61, top: 670, right: 1136, bottom: 2600 },
     alt: 'DICOM Camera on iPhone showing body-part selection.', platform: 'iphone', complete: false,
     caption: 'Body-part selection on iPhone.' },
-  { id: 'iphone-01', src: 'apple/iphone-01-home.png', out: 'iphone-capture-options', crop: { left: 40, top: 492, right: 1156, bottom: 2600 },
+  { id: 'iphone-01', src: 'apple/iphone-01-home.png', out: 'iphone-capture-options', crop: { left: 61, top: 507, right: 1136, bottom: 2600 },
     alt: 'DICOM Camera capture options on iPhone.', platform: 'iphone', complete: false,
     caption: 'Capture options on iPhone. This earlier screen labels the capture-first option “Quick Photos”.' },
-  { id: 'ipad-03', src: 'apple/ipad-03.png', out: 'ipad-capture-options', crop: { left: 64, top: 435, right: 1536, bottom: 2134 },
+  { id: 'ipad-03', src: 'apple/ipad-03.png', out: 'ipad-capture-options', crop: { left: 85, top: 450, right: 1515, bottom: 2134 },
     alt: 'DICOM Camera on iPad with worklist, patient, Quick Take, and Photo Album entry options.', platform: 'ipad', complete: false,
     caption: 'Capture entry options on iPad, including Quick Take.' },
-  { id: 'ipad-04', src: 'apple/ipad-04.png', out: 'ipad-body-part', crop: { left: 64, top: 674, right: 1536, bottom: 2134 },
+  { id: 'ipad-04', src: 'apple/ipad-04.png', out: 'ipad-body-part', crop: { left: 85, top: 689, right: 1516, bottom: 2134 },
     alt: 'Body-part selection in DICOM Camera on iPad.', platform: 'ipad', complete: false,
     caption: 'Body-part selection on iPad.' },
-  { id: 'android-08', src: 'google-play/android-08.png', out: 'android-body-part', crop: { left: 61, top: 570, right: 1558, bottom: 2845 },
+  // The Google Play compositions show the app on a tablet-proportioned device mockup. The site presents
+  // the app screen itself (a faithful crop inside the frame) so Android reads as an app screen, not a tablet.
+  { id: 'android-08', src: 'google-play/android-08.png', out: 'android-body-part', crop: { left: 142, top: 651, right: 1459, bottom: 2759 }, screenOnly: true,
     alt: 'Body-part selection in DICOM Camera on Android.', platform: 'android', complete: true,
     caption: 'Body-part selection on Android.' },
-  { id: 'android-10', src: 'google-play/android-10.png', out: 'android-capture-options', crop: { left: 61, top: 727, right: 1558, bottom: 2880 },
+  { id: 'android-10', src: 'google-play/android-10.png', out: 'android-capture-options', crop: { left: 142, top: 808, right: 1460, bottom: 2880 }, screenOnly: true,
     alt: 'DICOM Camera capture options on Android.', platform: 'android', complete: false,
     caption: 'Capture options on Android. This earlier screen labels the capture-first option “Quick Photos”.' },
 ];
@@ -43,6 +45,41 @@ const SCREENSHOTS = [
 const WIDTHS = [320, 480, 640, 800, 1000];
 
 async function exists(p) { try { await stat(p); return true; } catch { return false; } }
+
+/**
+ * Flood-fills near-white pixels connected to the image border and sets their alpha to 0.
+ * Only the surrounding canvas is affected: the dark device frame encloses the screen, so white UI
+ * pixels inside the screen are never reached. Anti-aliased frame edge pixels get partial alpha.
+ */
+function makeCanvasTransparent(rgba, width, height) {
+  const out = Buffer.from(rgba);
+  const visited = new Uint8Array(width * height);
+  const queue = new Int32Array(width * height);
+  let head = 0, tail = 0;
+  const isCanvas = (i) => out[i * 4] > 225 && out[i * 4 + 1] > 225 && out[i * 4 + 2] > 225;
+  const push = (i) => { if (!visited[i] && isCanvas(i)) { visited[i] = 1; queue[tail++] = i; } };
+  for (let x = 0; x < width; x++) { push(x); push((height - 1) * width + x); }
+  for (let y = 0; y < height; y++) { push(y * width); push(y * width + width - 1); }
+  while (head < tail) {
+    const i = queue[head++];
+    const x = i % width, y = (i - x) / width;
+    out[i * 4 + 3] = 0;
+    if (x > 0) push(i - 1);
+    if (x < width - 1) push(i + 1);
+    if (y > 0) push(i - width);
+    if (y < height - 1) push(i + width);
+  }
+  // Soften the 1px anti-aliased rim: light pixels touching the transparent region get proportional alpha.
+  for (let i = 0; i < width * height; i++) {
+    if (visited[i]) continue;
+    const x = i % width, y = (i - x) / width;
+    const nearClear = (x > 0 && visited[i - 1]) || (x < width - 1 && visited[i + 1]) || (y > 0 && visited[i - width]) || (y < height - 1 && visited[i + width]);
+    if (!nearClear) continue;
+    const l = (out[i * 4] + out[i * 4 + 1] + out[i * 4 + 2]) / 3;
+    if (l > 120) out[i * 4 + 3] = Math.round(255 * Math.max(0, Math.min(1, (255 - l) / 135)));
+  }
+  return out;
+}
 
 async function buildScreenshot(entry) {
   const srcPath = path.join(ASSETS, entry.src);
@@ -52,7 +89,11 @@ async function buildScreenshot(entry) {
   const width = c.right - c.left;
   const height = c.bottom - c.top;
   if (c.right > meta.width || c.bottom > meta.height) throw new Error(`Crop out of bounds for ${entry.id}`);
-  const base = image.extract({ left: c.left, top: c.top, width, height });
+  // Extract the frame crop, then make the store composition's white canvas OUTSIDE the device frame
+  // transparent (flood fill from the outer edges). The frame and the app screen are untouched.
+  const { data, info } = await image.clone().extract({ left: c.left, top: c.top, width, height }).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const cutout = entry.screenOnly ? data : makeCanvasTransparent(data, info.width, info.height);
+  const base = sharp(cutout, { raw: { width: info.width, height: info.height, channels: 4 } });
   const outputs = { avif: [], webp: [], png: [] };
   await mkdir(OUT, { recursive: true });
   for (const w of WIDTHS.filter((w) => w <= width)) {
@@ -68,8 +109,10 @@ async function buildScreenshot(entry) {
   }
   return {
     id: entry.id, source: `assets-source/${entry.src}`, sourceWidth: meta.width, sourceHeight: meta.height,
-    crop: { ...c, width, height }, transformation: 'Faithful crop removing the legacy promotional headline above the device frame; app screen and existing frame unchanged. Resized (downscale only) to responsive widths in AVIF, WebP and PNG.',
-    platform: entry.platform, complete: entry.complete, alt: entry.alt, caption: entry.caption,
+    crop: { ...c, width, height }, transformation: entry.screenOnly
+      ? 'Faithful crop to the app screen inside the device frame (removes the legacy promotional headline and the tablet-proportioned device mockup); screen content unchanged. Resized (downscale only) to responsive widths in AVIF, WebP and PNG.'
+      : 'Faithful crop to the existing device frame (removes the legacy promotional headline); the white canvas outside the frame is made transparent; app screen and frame unchanged. Resized (downscale only) to responsive widths in AVIF, WebP and PNG (all with alpha).',
+    platform: entry.platform, complete: entry.complete, screenOnly: !!entry.screenOnly, alt: entry.alt, caption: entry.caption,
     aspect: `${width} / ${height}`, width, height, outputs,
   };
 }
@@ -154,11 +197,13 @@ async function main() {
 export interface ImageSource { w: number; h: number; file: string }
 export interface ScreenshotImage {
   id: string; platform: 'iphone' | 'ipad' | 'android'; complete: boolean;
+  /** True when the derivative is the bare app screen (no device frame in the image). */
+  screenOnly: boolean;
   width: number; height: number; aspect: string; alt: string; caption: string;
   avif: ImageSource[]; webp: ImageSource[]; png: ImageSource[];
 }
 export const screenshots = {
-${shots.map((s) => `  ${JSON.stringify(s.id)}: ${JSON.stringify({ id: s.id, platform: s.platform, complete: s.complete, width: s.width, height: s.height, aspect: s.aspect, alt: s.alt, caption: s.caption, avif: s.outputs.avif, webp: s.outputs.webp, png: s.outputs.png })} as ScreenshotImage,`).join('\n')}
+${shots.map((s) => `  ${JSON.stringify(s.id)}: ${JSON.stringify({ id: s.id, platform: s.platform, complete: s.complete, screenOnly: s.screenOnly, width: s.width, height: s.height, aspect: s.aspect, alt: s.alt, caption: s.caption, avif: s.outputs.avif, webp: s.outputs.webp, png: s.outputs.png })} as ScreenshotImage,`).join('\n')}
 } as const;
 export type ScreenshotId = keyof typeof screenshots;
 `;

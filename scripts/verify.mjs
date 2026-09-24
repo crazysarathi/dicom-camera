@@ -193,6 +193,16 @@ await flow('legacy path URLs redirect to hash routes (/workflows/ → /#/workflo
   const h1 = await page.locator('h1').first().textContent(); if (!/clinical capture/i.test(h1 || '')) throw new Error('h1=' + h1);
   return { url };
 });
+await flow('back-to-top control appears after scrolling, is keyboard operable and returns to the top', async (page) => {
+  await page.setViewportSize({ width: 390, height: 844 }); await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+  const btn = page.locator('button[aria-label="Back to top"]');
+  const hiddenAtTop = await btn.evaluate((b) => b.getAttribute('aria-hidden') === 'true' && b.tabIndex === -1); if (!hiddenAtTop) throw new Error('control not hidden at top');
+  await page.evaluate(() => window.scrollTo(0, 2000)); await page.waitForTimeout(600);
+  const shown = await btn.evaluate((b) => b.getAttribute('aria-hidden') !== 'true' && getComputedStyle(b).opacity === '1'); if (!shown) throw new Error('control not shown after scrolling');
+  await btn.focus(); await page.keyboard.press('Enter'); await page.waitForTimeout(1500);
+  const y = await page.evaluate(() => window.scrollY); if (y > 2) throw new Error('did not return to top, scrollY=' + y);
+  return {};
+});
 await context.close(); await browser.close();
 
 // Cross-browser smoke: Firefox and WebKit load home + support without page errors.

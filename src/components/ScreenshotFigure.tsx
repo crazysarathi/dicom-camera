@@ -21,6 +21,8 @@ interface ScreenshotFigureProps {
 /**
  * Responsive, genuine store screenshot. Originals already include the device frame; no extra frame is added.
  * Emits AVIF and WebP sources with a PNG fallback and explicit dimensions to avoid layout shift.
+ * The crop is tight to the device frame and the canvas outside the frame is transparent (see scripts/build-images.mjs).
+ * Screen-only derivatives (no device frame in the artwork) get rounded corners and a hairline ring so they read as an app screen.
  */
 export function ScreenshotFigure({ image, priority = false, sizes = '(min-width: 1024px) 420px, 80vw', className, imgClassName, caption = false, bleed, alt, id }: ScreenshotFigureProps) {
   const img = screenshots[image];
@@ -42,7 +44,7 @@ export function ScreenshotFigure({ image, priority = false, sizes = '(min-width:
           alt={alt ?? img.alt}
           loading={priority ? 'eager' : 'lazy'}
           decoding={priority ? 'sync' : 'async'}
-          className={cn('h-auto w-full', imgClassName)}
+          className={cn('h-auto w-full', img.screenOnly && 'rounded-[4%] ring-1 ring-ink/15', imgClassName)}
           style={{ aspectRatio: img.aspect }}
           {...priorityAttrs}
         />

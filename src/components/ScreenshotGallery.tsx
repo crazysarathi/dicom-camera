@@ -37,7 +37,12 @@ const iconFor = (id: string): LucideIcon => groupIcons[id] ?? Images;
 
 /** Wide iPad compositions get more room than tall phone compositions so both read at a similar height. */
 function figureWidth(id: ScreenshotId) {
-  const wide = screenshots[id].platform === 'ipad';
+  const { platform, screenOnly } = screenshots[id];
+  const wide = platform === 'ipad';
+  if (screenOnly) {
+    // Bare app screens (Android) are shown narrower so they read as a phone-sized screen.
+    return { className: 'max-w-[250px]', sizes: '(min-width: 640px) 250px, 64vw' };
+  }
   return {
     className: wide ? 'max-w-[520px]' : 'max-w-[320px]',
     sizes: wide ? '(min-width: 640px) 520px, 90vw' : '(min-width: 640px) 320px, 80vw',

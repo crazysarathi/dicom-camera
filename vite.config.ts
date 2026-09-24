@@ -9,14 +9,9 @@ export default defineConfig({
     target: 'es2020',
     sourcemap: false,
     cssCodeSplit: true,
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules/three') || id.includes('@react-three')) return 'three';
-          if (id.includes('node_modules/gsap') || id.includes('@gsap')) return 'gsap';
-        },
-      },
-    },
+    // No manual chunks: Rollup keeps shared modules in the entry and emits Three.js only as a
+    // dependency of the two lazily imported scene chunks (verified by scripts/check-content.mjs).
+    chunkSizeWarningLimit: 900,
   },
   ssr: { noExternal: ['@fontsource-variable/inter'] },
 });

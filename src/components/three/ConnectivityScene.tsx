@@ -1,4 +1,4 @@
-import { memo, useEffect, useMemo, useRef } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { ContactShadows, RoundedBox } from '@react-three/drei';
 import {
@@ -44,6 +44,16 @@ const NODE = {
 
 const GROUND_Y = -1.1;
 
+/**
+ * Where cables leave the devices: just inside each slab's right edge (accounting for its yaw), so the
+ * tube exits through the edge instead of sprouting from the middle of the screen, and the endpoint
+ * stays hidden inside the body while the device bobs.
+ */
+const PORT = {
+  phone: [NODE.phone[0] + 0.14, NODE.phone[1], NODE.phone[2] - 0.09] as Vec3,
+  tablet: [NODE.tablet[0] + 0.34, NODE.tablet[1], NODE.tablet[2] - 0.18] as Vec3,
+};
+
 /** Colours (page-lightened where they must stay quiet). */
 const PAGE = '#F8FAFC';
 const INK = scenePalette.nodeInk;
@@ -71,12 +81,12 @@ const TARGET_INDEX: Record<TargetId, number> = { serviceTop: 0, serviceMid: 1, s
 
 /** Devices fan out to the services (blue); services converge on the archive (teal). */
 const EDGES: EdgeDef[] = [
-  { from: NODE.phone, to: NODE.serviceTop, tone: 'blue', target: 'serviceTop', period: 7.2 },
-  { from: NODE.phone, to: NODE.serviceMid, tone: 'blue', target: 'serviceMid', period: 8.6 },
-  { from: NODE.phone, to: NODE.serviceLow, tone: 'blue', target: 'serviceLow', period: 9.4 },
-  { from: NODE.tablet, to: NODE.serviceTop, tone: 'blue', target: 'serviceTop', period: 9.8 },
-  { from: NODE.tablet, to: NODE.serviceMid, tone: 'blue', target: 'serviceMid', period: 7.8 },
-  { from: NODE.tablet, to: NODE.serviceLow, tone: 'blue', target: 'serviceLow', period: 8.2 },
+  { from: PORT.phone, to: NODE.serviceTop, tone: 'blue', target: 'serviceTop', period: 7.2 },
+  { from: PORT.phone, to: NODE.serviceMid, tone: 'blue', target: 'serviceMid', period: 8.6 },
+  { from: PORT.phone, to: NODE.serviceLow, tone: 'blue', target: 'serviceLow', period: 9.4 },
+  { from: PORT.tablet, to: NODE.serviceTop, tone: 'blue', target: 'serviceTop', period: 9.8 },
+  { from: PORT.tablet, to: NODE.serviceMid, tone: 'blue', target: 'serviceMid', period: 7.8 },
+  { from: PORT.tablet, to: NODE.serviceLow, tone: 'blue', target: 'serviceLow', period: 8.2 },
   { from: NODE.serviceTop, to: NODE.archive, tone: 'teal', target: 'archive', period: 8.9 },
   { from: NODE.serviceMid, to: NODE.archive, tone: 'teal', target: 'archive', period: 7.5 },
   { from: NODE.serviceLow, to: NODE.archive, tone: 'teal', target: 'archive', period: 9.1 },
@@ -103,6 +113,12 @@ const PARALLAX_EL = 0.03;
 const PULSE_DECAY = 2.4;
 const STILL_TIME = 5.3;
 const MAX_DELTA = 0.1;
+/**
+ * Render layer for cables, rings, packets and the grid. The main camera sees layers 0 and 1; the
+ * contact-shadow camera only sees layer 0, so just the solid bodies cast shadows and the ground
+ * stays clean instead of being streaked by every thin line.
+ */
+const NO_SHADOW_LAYER = 1;
 
 /** Camera orbit: distance, azimuth (from the right) and elevation (looking down). */
 const CAM_TARGET = new Vector3(0, 0.0, 0);
@@ -167,6 +183,12 @@ function CameraRig({ animate, finePointer }: { animate: boolean; finePointer: bo
   const pointer = useRef({ x: 0, y: 0 });
   const eased = useRef({ x: 0, y: 0 });
   const scratch = useMemo(() => new Vector3(), []);
+
+  useEffect(() => {
+    camera.layers.enable(NO_SHADOW_LAYER);
+    camera.position.copy(orbitPosition(CAM_AZIMUTH, CAM_ELEVATION, scratch));
+    camera.lookAt(CAM_TARGET);
+  }, [camera, scratch]);
 
   useEffect(() => {
     if (!animate || !finePointer || typeof window === 'undefined') return;
@@ -312,10 +334,15 @@ function Graph({ animate, finePointer }: { animate: boolean; finePointer: boolea
   useEffect(() => {
     const mesh = trailRef.current;
     if (!mesh) return;
+    mesh.layers.set(NO_SHADOW_LAYER);
     trailColors.forEach((color, i) => mesh.setColorAt(i, color));
     if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
   }, [trailColors]);
 
+  /** Ref callback that moves an object to the shadow-free layer. */
+  const noShadow = useCallback((object: Object3D | null) => {
+    object?.layers.set(NO_SHADOW_LAYER);
+  }, []);
   const packetRefs = useRef<(Mesh | null)[]>([]);
   const ringRefs = useRef<(Group | null)[]>([]);
   const deviceRefs = useRef<(Group | null)[]>([]);
@@ -420,7 +447,7 @@ function Graph({ animate, finePointer }: { animate: boolean; finePointer: boolea
 
       <group scale={fit}>
         {/* Ground: faint grid that recedes into the fog, plus soft contact shadows. */}
-        <lineSegments geometry={geometries.grid} material={materials.grid} position={[0, GROUND_Y - 0.01, -0.2]} />
+        <lineSegments ref={noShadow} geometry={geometries.grid} material={materials.grid} position={[0, GROUND_Y - 0.01, -0.2]} />
         <ContactShadows
           position={[0, GROUND_Y, -0.2]}
           scale={[9, 6]}
@@ -462,10 +489,10 @@ function Graph({ animate, finePointer }: { animate: boolean; finePointer: boolea
               rotation={service.rotation}
             />
             <group ref={(g) => { ringRefs.current[index * 2] = g; }}>
-              <mesh geometry={geometries.ringLarge} material={materials.ringBlue} rotation={[Math.PI / 2 + service.ringTilt[0][0], 0, service.ringTilt[0][2]]} />
+              <mesh ref={noShadow} geometry={geometries.ringLarge} material={materials.ringBlue} rotation={[Math.PI / 2 + service.ringTilt[0][0], 0, service.ringTilt[0][2]]} />
             </group>
             <group ref={(g) => { ringRefs.current[index * 2 + 1] = g; }}>
-              <mesh geometry={geometries.ringSmall} material={materials.ringTeal} rotation={[Math.PI / 2 + service.ringTilt[1][0], 0, service.ringTilt[1][2]]} />
+              <mesh ref={noShadow} geometry={geometries.ringSmall} material={materials.ringTeal} rotation={[Math.PI / 2 + service.ringTilt[1][0], 0, service.ringTilt[1][2]]} />
             </group>
           </group>
         ))}
@@ -487,14 +514,14 @@ function Graph({ animate, finePointer }: { animate: boolean; finePointer: boolea
 
         {/* Connections: thin translucent tubes along smooth S-curves */}
         {geometries.tubes.map((tube, index) => (
-          <mesh key={index} geometry={tube} material={materials.edge} />
+          <mesh key={index} ref={noShadow} geometry={tube} material={materials.edge} />
         ))}
 
         {/* Packets and their comet trails */}
         {EDGES.map((edge, index) => (
           <mesh
             key={index}
-            ref={(mesh) => { packetRefs.current[index] = mesh; }}
+            ref={(mesh) => { packetRefs.current[index] = mesh; noShadow(mesh); }}
             geometry={geometries.packet}
             material={edge.tone === 'blue' ? materials.packetBlue : materials.packetTeal}
             position={edge.from}

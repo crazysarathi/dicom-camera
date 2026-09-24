@@ -5,6 +5,7 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { MotionProvider } from '@/components/MotionProvider';
 import { ScrollManager } from '@/components/ScrollManager';
 import { Toaster } from '@/components/ui/sonner';
+import { BackToTop } from '@/components/BackToTop';
 
 export function Layout() {
   return (
@@ -18,6 +19,7 @@ export function Layout() {
         </main>
         <SiteFooter />
       </MotionProvider>
+      <BackToTop />
       <Toaster />
     </>
   );

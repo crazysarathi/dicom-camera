@@ -70,6 +70,22 @@ for (const f of src) {
   const s = await readFile(f, 'utf8');
   for (const re of FORBIDDEN.slice(0, 15)) { const m = s.match(re); if (m) { failures++; console.error(`FORBIDDEN "${m[0]}" in source ${path.relative(ROOT, f)}`); } }
 }
+// Performance regression guard: Three.js must stay off the critical path (lazy scene chunks only).
+{
+  const home = await readFile(path.join(dist, 'index.html'), 'utf8');
+  const assets = await readdir(path.join(dist, 'assets'));
+  const jsChunks = assets.filter((f) => f.endsWith('.js'));
+  const threeChunks = [];
+  for (const f of jsChunks) { const js = await readFile(path.join(dist, 'assets', f), 'utf8'); if (js.includes('WebGLRenderer')) threeChunks.push(f); }
+  const entry = jsChunks.find((f) => /^index-.*\.js$/.test(f));
+  if (entry && threeChunks.includes(entry)) { failures++; console.error(`${entry} contains Three.js (should be a lazy chunk).`); }
+  for (const t of threeChunks) {
+    if (home.includes(`modulepreload" crossorigin href="/assets/${t}`) || new RegExp(`modulepreload[^>]*${t.replace('.', '\\.')}`).test(home)) { failures++; console.error(`dist/index.html module-preloads the Three.js chunk ${t} (should be lazy).`); }
+    if (entry) { const js = await readFile(path.join(dist, 'assets', entry), 'utf8'); if (js.includes(`from"./${t}"`)) { failures++; console.error(`${entry} statically imports the Three.js chunk ${t} (should be lazy).`); } }
+  }
+  if (!threeChunks.length) { failures++; console.error('No Three.js chunk found in dist/assets (scenes missing?).'); }
+  console.log(`Three.js chunk(s): ${threeChunks.join(', ')} — lazy only.`);
+}
 failures += failuresPre;
 console.log(failures ? `${failures} content check failure(s).` : `Content checks passed for ${htmlFiles.length} rendered pages.`);
 process.exit(failures ? 1 : 0);

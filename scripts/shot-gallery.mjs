@@ -1,0 +1,15 @@
+import { chromium } from 'playwright';
+const [,, base, out, tabName] = process.argv;
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+await page.emulateMedia({ reducedMotion: 'reduce' });
+await page.goto(base + '/', { waitUntil: 'networkidle' });
+await page.locator('#platforms').scrollIntoViewIfNeeded();
+if (tabName) await page.getByRole('tab', { name: new RegExp(tabName, 'i') }).click();
+await page.waitForTimeout(3000);
+const el = page.locator('#platforms [role="tablist"]').first();
+const box = await el.boundingBox();
+const panel = page.locator('[role="tabpanel"]:not([hidden])').first();
+const pbox = await panel.boundingBox();
+await page.screenshot({ path: out, clip: { x: Math.max(0, box.x - 8), y: box.y - 8, width: Math.min(1440, pbox.width + 16), height: pbox.y + pbox.height - box.y + 16 } });
+await browser.close();

@@ -1,6 +1,6 @@
 {
   "base": "http://localhost:4173",
-  "generated": "2026-09-24T07:09:10.956Z",
+  "generated": "2026-09-24T08:40:48.964Z",
   "pages": [
     {
       "route": "/",
@@ -13,10 +13,7 @@
           "scrollWidth": 360,
           "clientWidth": 360,
           "overflow": false,
-          "wide": [
-            "button#radix-:Rdpc:-trigger-android.inline-flex.min-h-11.items-center",
-            "span.ml-0.5.inline-flex.min-w-[1.375rem]"
-          ],
+          "wide": [],
           "brokenImgs": [],
           "h1": 1,
           "title": "DICOM Camera | Clinical Photos and Video for PACS",
@@ -32,10 +29,7 @@
           "scrollWidth": 390,
           "clientWidth": 390,
           "overflow": false,
-          "wide": [
-            "button#radix-:Rdpc:-trigger-android.inline-flex.min-h-11.items-center",
-            "span.ml-0.5.inline-flex.min-w-[1.375rem]"
-          ],
+          "wide": [],
           "brokenImgs": [],
           "h1": 1,
           "title": "DICOM Camera | Clinical Photos and Video for PACS",
@@ -109,16 +103,7 @@
         }
       ],
       "axe": {
-        "390": [
-          {
-            "id": "color-contrast",
-            "impact": "serious",
-            "help": "Elements must meet minimum color contrast ratio thresholds",
-            "nodes": [
-              ".eyebrow"
-            ]
-          }
-        ],
+        "390": [],
         "1440": []
       },
       "links": {
@@ -248,26 +233,8 @@
         }
       ],
       "axe": {
-        "390": [
-          {
-            "id": "color-contrast",
-            "impact": "serious",
-            "help": "Elements must meet minimum color contrast ratio thresholds",
-            "nodes": [
-              ".max-w-3xl > .eyebrow.mb-3"
-            ]
-          }
-        ],
-        "1440": [
-          {
-            "id": "color-contrast",
-            "impact": "serious",
-            "help": "Elements must meet minimum color contrast ratio thresholds",
-            "nodes": [
-              ".max-w-3xl > .eyebrow.mb-3"
-            ]
-          }
-        ]
+        "390": [],
+        "1440": []
       },
       "links": {
         "total": 27,
@@ -358,9 +325,7 @@
           "brokenImgs": [],
           "h1": 1,
           "title": "Hospital and Enterprise Workflows | DICOM Camera",
-          "hiddenAfterScroll": [
-            "li.flex.items-start"
-          ],
+          "hiddenAfterScroll": [],
           "errors": [],
           "screenshot": "screenshots/enterprise-1024.png"
         },
@@ -376,9 +341,7 @@
           "brokenImgs": [],
           "h1": 1,
           "title": "Hospital and Enterprise Workflows | DICOM Camera",
-          "hiddenAfterScroll": [
-            "li.flex.items-start"
-          ],
+          "hiddenAfterScroll": [],
           "errors": [],
           "screenshot": "screenshots/enterprise-1440.png"
         },
@@ -400,26 +363,8 @@
         }
       ],
       "axe": {
-        "390": [
-          {
-            "id": "color-contrast",
-            "impact": "serious",
-            "help": "Elements must meet minimum color contrast ratio thresholds",
-            "nodes": [
-              ".eyebrow"
-            ]
-          }
-        ],
-        "1440": [
-          {
-            "id": "color-contrast",
-            "impact": "serious",
-            "help": "Elements must meet minimum color contrast ratio thresholds",
-            "nodes": [
-              ".eyebrow"
-            ]
-          }
-        ]
+        "390": [],
+        "1440": []
       },
       "links": {
         "total": 28,
@@ -548,26 +493,8 @@
         }
       ],
       "axe": {
-        "390": [
-          {
-            "id": "color-contrast",
-            "impact": "serious",
-            "help": "Elements must meet minimum color contrast ratio thresholds",
-            "nodes": [
-              ".eyebrow"
-            ]
-          }
-        ],
-        "1440": [
-          {
-            "id": "color-contrast",
-            "impact": "serious",
-            "help": "Elements must meet minimum color contrast ratio thresholds",
-            "nodes": [
-              ".eyebrow"
-            ]
-          }
-        ]
+        "390": [],
+        "1440": []
       },
       "links": {
         "total": 31,
@@ -701,26 +628,8 @@
         }
       ],
       "axe": {
-        "390": [
-          {
-            "id": "color-contrast",
-            "impact": "serious",
-            "help": "Elements must meet minimum color contrast ratio thresholds",
-            "nodes": [
-              ".eyebrow"
-            ]
-          }
-        ],
-        "1440": [
-          {
-            "id": "color-contrast",
-            "impact": "serious",
-            "help": "Elements must meet minimum color contrast ratio thresholds",
-            "nodes": [
-              ".eyebrow"
-            ]
-          }
-        ]
+        "390": [],
+        "1440": []
       },
       "links": {
         "total": 26,
@@ -849,26 +758,8 @@
         }
       ],
       "axe": {
-        "390": [
-          {
-            "id": "color-contrast",
-            "impact": "serious",
-            "help": "Elements must meet minimum color contrast ratio thresholds",
-            "nodes": [
-              ".eyebrow"
-            ]
-          }
-        ],
-        "1440": [
-          {
-            "id": "color-contrast",
-            "impact": "serious",
-            "help": "Elements must meet minimum color contrast ratio thresholds",
-            "nodes": [
-              ".eyebrow"
-            ]
-          }
-        ]
+        "390": [],
+        "1440": []
       },
       "links": {
         "total": 27,
@@ -997,26 +888,8 @@
         }
       ],
       "axe": {
-        "390": [
-          {
-            "id": "color-contrast",
-            "impact": "serious",
-            "help": "Elements must meet minimum color contrast ratio thresholds",
-            "nodes": [
-              ".eyebrow"
-            ]
-          }
-        ],
-        "1440": [
-          {
-            "id": "color-contrast",
-            "impact": "serious",
-            "help": "Elements must meet minimum color contrast ratio thresholds",
-            "nodes": [
-              ".eyebrow"
-            ]
-          }
-        ]
+        "390": [],
+        "1440": []
       },
       "links": {
         "total": 26,
@@ -1147,26 +1020,8 @@
         }
       ],
       "axe": {
-        "390": [
-          {
-            "id": "color-contrast",
-            "impact": "serious",
-            "help": "Elements must meet minimum color contrast ratio thresholds",
-            "nodes": [
-              ".eyebrow"
-            ]
-          }
-        ],
-        "1440": [
-          {
-            "id": "color-contrast",
-            "impact": "serious",
-            "help": "Elements must meet minimum color contrast ratio thresholds",
-            "nodes": [
-              ".eyebrow"
-            ]
-          }
-        ]
+        "390": [],
+        "1440": []
       },
       "links": {
         "total": 27,
@@ -1297,26 +1152,8 @@
         }
       ],
       "axe": {
-        "390": [
-          {
-            "id": "color-contrast",
-            "impact": "serious",
-            "help": "Elements must meet minimum color contrast ratio thresholds",
-            "nodes": [
-              ".eyebrow"
-            ]
-          }
-        ],
-        "1440": [
-          {
-            "id": "color-contrast",
-            "impact": "serious",
-            "help": "Elements must meet minimum color contrast ratio thresholds",
-            "nodes": [
-              ".eyebrow"
-            ]
-          }
-        ]
+        "390": [],
+        "1440": []
       },
       "links": {
         "total": 27,
@@ -1352,8 +1189,8 @@
     },
     {
       "name": "mobile navigation opens with keyboard, traps focus, Escape closes and returns focus",
-      "pass": false,
-      "error": "TimeoutError: locator.getAttribute: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /open navigation/i })\u001b[22m\n"
+      "pass": true,
+      "ariaExpandedWhenOpen": "true"
     },
     {
       "name": "FAQ disclosures open/close with keyboard on /support/",
@@ -1386,6 +1223,10 @@
       "name": "legacy path URLs redirect to hash routes (/workflows/ → /#/workflows/)",
       "pass": true,
       "url": "http://localhost:4173/#/workflows/"
+    },
+    {
+      "name": "back-to-top control appears after scrolling, is keyboard operable and returns to the top",
+      "pass": true
     }
   ],
   "browsers": {
@@ -1403,34 +1244,11 @@
   "summary": {
     "overflowIssues": [],
     "consoleErrors": [],
-    "axeViolations": [
-      "/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
-      "/#/workflows/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.max-w-3xl > .eyebrow.mb-3)",
-      "/#/workflows/ @1440: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.max-w-3xl > .eyebrow.mb-3)",
-      "/#/enterprise/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
-      "/#/enterprise/ @1440: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
-      "/#/integration/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
-      "/#/integration/ @1440: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
-      "/#/privacy-and-retention/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
-      "/#/privacy-and-retention/ @1440: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
-      "/#/download/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
-      "/#/download/ @1440: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
-      "/#/support/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
-      "/#/support/ @1440: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
-      "/#/contact/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
-      "/#/contact/ @1440: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
-      "/#/this-page-does-not-exist/ @390: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)",
-      "/#/this-page-does-not-exist/ @1440: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (.eyebrow)"
-    ],
+    "axeViolations": [],
     "h1Issues": [],
     "brokenImgs": [],
-    "hiddenContent": [
-      "/#/enterprise/ @1024: li.flex.items-start",
-      "/#/enterprise/ @1440: li.flex.items-start"
-    ],
+    "hiddenContent": [],
     "linkIssues": [],
-    "keyboardFailures": [
-      "mobile navigation opens with keyboard, traps focus, Escape closes and returns focus: TimeoutError: locator.getAttribute: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /open navigation/i })\u001b[22m\n"
-    ]
+    "keyboardFailures": []
   }
 }

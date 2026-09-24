@@ -22,7 +22,11 @@ const assets = await readdir(path.join(DIST, 'assets'));
 const fontFile = assets.find((f) => /inter-latin-wght-normal.*\.woff2$/.test(f));
 const fontPreload = fontFile ? `<link rel="preload" href="/assets/${fontFile}" as="font" type="font/woff2" crossorigin />` : '';
 
-const fill = (head, html) => template.replace('<!--app-head-->', `${head}\n    ${fontPreload}`).replace('<!--app-html-->', html);
+// Inline the (small) entry stylesheet so first paint does not wait for a second request.
+const cssLink = template.match(/<link rel="stylesheet"[^>]*href="\/assets\/([^"]+\.css)"[^>]*>/);
+const inlineCss = cssLink ? `<style>${await readFile(path.join(DIST, 'assets', cssLink[1]), 'utf8')}</style>` : '';
+const withInlineCss = (html) => (cssLink ? html.replace(cssLink[0], inlineCss) : html);
+const fill = (head, html) => withInlineCss(template.replace('<!--app-head-->', `${head}\n    ${fontPreload}`).replace('<!--app-html-->', html));
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
 function redirectStub(hashPath, title) {

@@ -59,7 +59,11 @@ function PlatformCard({ panel }: { panel: PlatformPanel }) {
       </div>
       {/* Compositions that bleed off their original bottom edge sit flush with the card edge so the card clips the cut naturally. */}
       <div className={cn('mt-auto px-10 sm:px-14', complete ? 'pb-8 sm:pb-10' : 'pb-0')}>
-        <ScreenshotFigure image={panel.screenshot} sizes="(min-width: 1024px) 360px, (min-width: 640px) 60vw, 70vw" className="mx-auto max-w-[22rem]" />
+        <ScreenshotFigure
+          image={panel.screenshot}
+          sizes={screenshots[panel.screenshot].screenOnly ? '(min-width: 1024px) 280px, 56vw' : '(min-width: 1024px) 360px, (min-width: 640px) 60vw, 70vw'}
+          className={cn('mx-auto', screenshots[panel.screenshot].screenOnly ? 'max-w-[17.5rem]' : 'max-w-[22rem]')}
+        />
       </div>
     </article>
   );
